@@ -46,7 +46,7 @@ const Spinner: React.FC<SpinnerProps> = ({ SpinnerImgs }) => {
   ));
 
   return (
-    <div style={{ position: 'relative', width: '600px', height: '600px' }}>
+    <div style={{ position: 'relative', width: '50%', left: '25%', height: 'auto' }}>
       {assembledSpinnerImgs}
     </div>
   );
