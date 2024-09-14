@@ -1,26 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import NavItem from "./NavItem";
 
 const MENU_LIST = [
     {
         text: "Home",
-        href: "/"
+        href: "/",
+        idx: 0
     },
     {
         text: "Projects",
-        href: "/projects"
+        href: "/projects",
+        idx: 1
     },
     {
         text: "Blogs",
-        href: "/blogs"
+        href: "/blogs",
+        idx: 2
     }
 ]
 
 const Navbar = () => {
 
     const [navActive, setNavActive] = useState(false);
-    const [activeIdx, setActiveIdx] = useState(0);
+    const [activeIdx, setActiveIdx] = useState<number | null>(null);
+
+    useEffect(() => {
+        const currentPath = window.location.pathname;
+        const sortedMenuList = [...MENU_LIST].sort((a, b) => b.href.length - a.href.length);
+        const matchingItem = sortedMenuList.find(item => currentPath.startsWith(item.href));
+        if (matchingItem) {
+            setActiveIdx(matchingItem.idx);
+        }
+    }, []); // Empty dependency array ensures this runs once on mount
 
     return (
         <header className="sticky-header">

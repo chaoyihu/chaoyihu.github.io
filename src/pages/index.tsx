@@ -14,11 +14,11 @@ export default function Home() {
   }, []);
 
   const SpinnerImgsProps: SpinnerImgProps[] = [
-    { src: "/images/cog-1.webp", layer: -101, cycle: 60, angle: 359, key: 1 },
-    { src: "/images/cog-2.webp", layer: -102, cycle: 20, angle: -359, key: 2 },
-    { src: "/images/cog-3.webp", layer: -103, cycle: 280, angle: 359, key: 3 },
-    { src: "/images/cog-4.webp", layer: -104, cycle: 400, angle: -359, key: 4 },
-    { src: "/images/cog-5.webp", layer: -105, cycle: 600, angle: 359, key: 5 }
+    { src: "/images/animation/cog-1.webp", layer: -101, cycle: 60, angle: 359, key: 1 },
+    { src: "/images/animation/cog-2.webp", layer: -102, cycle: 20, angle: -359, key: 2 },
+    { src: "/images/animation/cog-3.webp", layer: -103, cycle: 280, angle: 359, key: 3 },
+    { src: "/images/animation/cog-4.webp", layer: -104, cycle: 400, angle: -359, key: 4 },
+    { src: "/images/animation/cog-5.webp", layer: -105, cycle: 600, angle: 359, key: 5 }
   ];
 
   return (
