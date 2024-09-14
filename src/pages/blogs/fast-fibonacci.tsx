@@ -1,3 +1,4 @@
+/* TODO: Configure Mathjax support in MDX */
 import Content from '@/markdown/blogs/fast-fibonacci.mdx';
 import BlogHeader, { BlogInfo } from '@/components/Blog/BlogHeader';
 

@@ -1,16 +1,40 @@
-/* New Header */
+/* Layout for the entire page */
+.root {
+  display: block;
+  width: 100%;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Blogs */
+.blog__left-pane {
+  width: 25%;
+  height: 100%;
+  overflow: auto;
+}
+
+.blog__right-pane {
+  width: 80%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Header */
 
 .sticky-header {
   position: sticky;
+  width: 100%;
   top: 0;
   z-index: 999;
 }
 
-/* Navbar (How to make it sticky on top?)*/
-
 .nav {
   display: flex;
-  padding: 16px;
+  padding: 8px 16px 8px 16px;
   justify-content: space-between;
   align-items: center;
   background-color: #f1f1f1;
@@ -306,10 +330,6 @@
 /**
  * Page content
  */
-.page-content {
-  padding: $spacing-unit 0;
-  flex: 1;
-}
 
 .page-heading {
   @include relative-font-size(2);
@@ -581,3 +601,5 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+

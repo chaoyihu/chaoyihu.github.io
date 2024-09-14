@@ -38,7 +38,7 @@ const Navbar = () => {
         <header className="sticky-header">
             <nav className='nav'>
                 <Link href="/" onClick={() => setActiveIdx(0)}>
-                        <h1 className='logo'>chaoyihu.github.io</h1>
+                        chaoyihu.github.io
                 </Link>
 
                 <div onClick={() => setNavActive(!navActive)} className="nav__menu-bar">
