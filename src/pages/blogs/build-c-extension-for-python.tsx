@@ -1,6 +1,10 @@
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import Blog, { BlogInfo } from '@/components/Blog/Blog';
 import Content from '@/markdown/blogs/build-c-extension-for-python.mdx';
-import BlogHeader, { BlogInfo } from '@/components/Blog/BlogHeader';
 
+
+const content = ReactDOMServer.renderToString(<Content />);
 
 const info: BlogInfo = {
     title: "Build a C Extension for Python using Python API on Linux",
@@ -9,13 +13,10 @@ const info: BlogInfo = {
     description: `Explaining how I followed Python's Doc to build a Python C extension 
     using Python API, which can be imported as a library to run shell commands in Python 
     scripts.`
-}
+};
 
 export default function Page() {
-    return (
-        <>
-            <BlogHeader info={info}/>
-            <Content />
-        </>
-    );
+  return (
+    <Blog blogInfo={info} htmlString={content}/>
+  );
 }

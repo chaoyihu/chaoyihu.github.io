@@ -3,8 +3,10 @@ import type { AppProps } from "next/app";
 import Navbar from "@/components/Navbar/Navbar";
 import React, { useState, useEffect, useRef } from 'react';
 
+
 export default function App({ Component, pageProps }: AppProps) {
 
+  /* Dynamically update the height of page content based on rendered header height */
   const [headerHeight, setHeaderHeight] = useState<number>(0);
   const elementRef = useRef<HTMLDivElement | null>(null);
 

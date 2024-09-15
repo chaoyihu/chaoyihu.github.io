@@ -10,17 +10,35 @@
   width: 100%;
 }
 
-/* Blogs */
-.blog__left-pane {
+/* Blogs - two column */
+.main-text {
+  width: 80%;
+  height: 100%;
+  overflow: auto;
+}
+
+.toc-sidebar {
   width: 25%;
   height: 100%;
   overflow: auto;
 }
 
-.blog__right-pane {
-  width: 80%;
-  height: 100%;
-  overflow: auto;
+.toc-sidebar a {
+  text-decoration: none;
+  display: block;
+}
+
+.toc-sidebar a:hover {
+  background-color: $my-color-orange;
+}
+
+.toc-sidebar ul {
+  list-style-type: square;
+  font-size: 16px;
+}
+
+.toc-sidebar li {
+  margin-bottom: 5px;
 }
 
 /* Header */
@@ -137,118 +155,112 @@
   justify-content: center;
 }
 
-/**
- * Site header
- */
-.site-header {
-  min-height: $spacing-unit * 1.865;
+// /**
+//  * Old Site header
+//  */
 
-  // Positioning context for the mobile navigation icon
-  position: relative;
-}
+// .site-title {
+//   @include relative-font-size(1.625);
+//   font-weight: 300;
+//   line-height: $base-line-height * $base-font-size * 2.25;
+//   letter-spacing: -1px;
+//   margin-bottom: 0;
+//   float: left;
 
-.site-title {
-  @include relative-font-size(1.625);
-  font-weight: 300;
-  line-height: $base-line-height * $base-font-size * 2.25;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-  float: left;
+//   &,
+//   &:visited {
+//     color: $grey-color-dark;
+//   }
+// }
 
-  &,
-  &:visited {
-    color: $grey-color-dark;
-  }
-}
+// .site-nav {
+//   float: right;
+//   line-height: $base-line-height * $base-font-size * 2.25;
 
-.site-nav {
-  float: right;
-  line-height: $base-line-height * $base-font-size * 2.25;
+//   .nav-trigger {
+//       display: none;
+//   }
 
-  .nav-trigger {
-      display: none;
-  }
+//   .menu-icon {
+//     display: none;
+//   }
 
-  .menu-icon {
-    display: none;
-  }
+//   .page-link {
+//     color: $text-color;
+//     line-height: $base-line-height;
 
-  .page-link {
-    color: $text-color;
-    line-height: $base-line-height;
+//     // Gaps between nav items, but not on the last one
+//     &:not(:last-child) {
+//       margin-right: 20px;
+//     }
+//   }
 
-    // Gaps between nav items, but not on the last one
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-  }
+//   .contact-link {
+//     background-color:rgb(129, 192, 255);
+//     border-radius: 8px;
+//     padding: 5px 10px;
+//   }
 
-  .contact-link {
-    background-color:rgb(129, 192, 255);
-    border-radius: 8px;
-    padding: 5px 10px;
-  }
+//   .contact-link:hover {
+//     text-decoration: none;
+//     background-color:rgb(157, 204, 252);
+//     border-radius: 8px;
+//     padding: 5px 10px;
+//   }
 
-  .contact-link:hover {
-    text-decoration: none;
-    background-color:rgb(157, 204, 252);
-    border-radius: 8px;
-    padding: 5px 10px;
-  }
+//   @include media-query($on-palm) {
+//     position: absolute;
+//     top: 9px;
+//     right: calc($spacing-unit / 2);
+//     background-color: $background-color;
+//     border: 1px solid $grey-color-light;
+//     border-radius: 5px;
+//     text-align: right;
 
-  @include media-query($on-palm) {
-    position: absolute;
-    top: 9px;
-    right: calc($spacing-unit / 2);
-    background-color: $background-color;
-    border: 1px solid $grey-color-light;
-    border-radius: 5px;
-    text-align: right;
+//     label[for="nav-trigger"] {
+//       display: block;
+//       float: right;
+//       width: 36px;
+//       height: 36px;
+//       z-index: 2;
+//       cursor: pointer;
+//     }
 
-    label[for="nav-trigger"] {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 36px;
-      z-index: 2;
-      cursor: pointer;
-    }
+//     .menu-icon {
+//       display: block;
+//       float: right;
+//       width: 36px;
+//       height: 26px;
+//       line-height: 0;
+//       padding-top: 10px;
+//       text-align: center;
 
-    .menu-icon {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
-      line-height: 0;
-      padding-top: 10px;
-      text-align: center;
+//       > svg {
+//         fill: $grey-color-dark;
+//       }
+//     }
 
-      > svg {
-        fill: $grey-color-dark;
-      }
-    }
+//     input ~ .trigger {
+//       clear: both;
+//       display: none;
+//     }
 
-    input ~ .trigger {
-      clear: both;
-      display: none;
-    }
+//     input:checked ~ .trigger {
+//       display: block;
+//       padding-bottom: 5px;
+//     }
 
-    input:checked ~ .trigger {
-      display: block;
-      padding-bottom: 5px;
-    }
+//     .page-link {
+//       display: block;
+//       padding: 5px 10px;
 
-    .page-link {
-      display: block;
-      padding: 5px 10px;
-
-      &:not(:last-child) {
-        margin-right: 0;
-      }
-      margin-left: 20px;
-    }
-  }
-}
+//       &:not(:last-child) {
+//         margin-right: 0;
+//       }
+//       margin-left: 20px;
+//     }
+//   }
+// }
 
 
 
@@ -475,31 +487,7 @@
   font-size: 25px;
 }
 
-.toc-sidebar a {
-  text-decoration: none;
-  display: block;
-}
 
-.toc-sidebar a:hover {
-  background-color: $my-color-orange;
-}
-
-.toc-sidebar ul {
-  list-style-type: square;
-  font-size: 16px;
-}
-
-.toc-sidebar li {
-  margin-bottom: 5px;
-}
-
-.post-main {
-  max-width: 50%;
-  min-width: 800px;
-  margin-left: 25%;
-  padding-left: 30px;
-  padding-right: 30px;
-}
 
 /* Custom - Blog Tags */
 .blog-item {

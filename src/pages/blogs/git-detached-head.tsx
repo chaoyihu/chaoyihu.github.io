@@ -1,6 +1,10 @@
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import Blog, { BlogInfo } from '@/components/Blog/Blog';
 import Content from '@/markdown/blogs/git-detached-head.mdx';
-import BlogHeader, { BlogInfo } from '@/components/Blog/BlogHeader';
 
+
+const content = ReactDOMServer.renderToString(<Content />);
 
 const info: BlogInfo = {
     title: "Resetting an Unwanted Merge Commit in Git",
@@ -9,11 +13,9 @@ const info: BlogInfo = {
     description: `This post documents a quick solution to reset a commit.`
 }
 
+
 export default function Page() {
     return (
-        <>
-            <BlogHeader info={info}/>
-            <Content />
-        </>
+    <Blog blogInfo={info} htmlString={content}/>
     );
 }
