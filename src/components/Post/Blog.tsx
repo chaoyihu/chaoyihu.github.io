@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HtmlContent from '@/components/Blog/HTMLContent';
+import HtmlContent from '@/components/Post/HTMLContent';
 import TableOfContents from '@/components/TableOfContents/TableOfContents';
 import BlogHeader from './BlogHeader';
 
@@ -27,8 +27,12 @@ const Blog: React.FC<BlogProps> = ({ blogInfo, htmlString }) => {
     return (
     <>
         <div className='main-text'>
-        <BlogHeader info={blogInfo} />
-        <HtmlContent htmlString={htmlString} onRendered={handleHtmlContentRendered} />
+            <div className='blog-header'>
+                <BlogHeader info={blogInfo} />
+            </div>
+            <div className='blog-content'>
+                <HtmlContent htmlString={htmlString} onRendered={handleHtmlContentRendered} />
+            </div>
         </div>
         {showTableOfContents ? <TableOfContents /> : null}
     </>

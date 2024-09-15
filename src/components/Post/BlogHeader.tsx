@@ -13,9 +13,11 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ info }) => {
             backgroundColor: '#bdbdbd'
         }}>
             <h1 id="post-title" className="post-title">{info.title}</h1>
-            <p>{info.description}</p>
-            <p>{info.date}</p>
-            {info.tags.map((tag, idx)=>(<strong key={idx}>{tag}</strong>))}
+            <p className="blog-item-date" style={{ display: 'flex', margin: '0', color: 'black'}}>
+                Date: {info.date} | 
+                Tags: {info.tags.map((tag, idx)=>(<span className='blog-tag' key={idx}>{tag}</span>))}
+            </p>
+            <p className="blog-item-description" style={{ color: 'gray'}}>{info.description}</p>
         </div>
     )
 };

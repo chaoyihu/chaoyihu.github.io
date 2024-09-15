@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import Blog, { BlogInfo } from '@/components/Blog/Blog';
+import Blog, { BlogInfo } from '@/components/Post/Blog';
 import Content from '@/markdown/blogs/deploying-dockerized-web-app-to-amazon-ec2.mdx';
 
 
