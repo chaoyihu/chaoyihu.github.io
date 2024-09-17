@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectListItem, { ProjectListItemProps } from '@/components/Post/ProjectListItem';
+import Spinner, { SpinnerImgProps } from '@/components/Spinner/Spinner';
 
 export default function Projects() {
 
@@ -107,10 +108,35 @@ export default function Projects() {
     ]
 
 
+    /* Animation */
+    const [showAnimation, setShowAnimation] = useState(false);
+
+    useEffect(() => {
+      // Delay rendering the spinner to avoid initial static images before animation starts
+      const timer = setTimeout(() => setShowAnimation(true), 500);
+      return () => clearTimeout(timer);
+    }, []);
+
+    const spinner: SpinnerImgProps[] = [
+        { src: "/images/animation/star-1.webp", layer: -101, cycle: 60, angle: 359, key: 1 },
+        { src: "/images/animation/star-2.webp", layer: -102, cycle: 40, angle: 359, key: 2 },
+        { src: "/images/animation/star-3.webp", layer: -103, cycle: 280, angle: 359, key: 3 },
+        { src: "/images/animation/star-4.webp", layer: -104, cycle: 400, angle: -359, key: 4 },
+        { src: "/images/animation/star-5.webp", layer: -105, cycle: 600, angle: 359, key: 5 }
+    ];
+
+
     return (
         <div className='project-index-wrapper'>
+            <div className='animation-container'>
+            {
+                showAnimation ? (
+                    <Spinner SpinnerImgs={spinner}/>
+                ) : null
+            }
+            </div>
             <div id="project-pane">
-                <h1 className="post-title p-name">Projects</h1>
+                <h1 className="post-title">Projects</h1>
                 {projectProps.map((prop) => (
                     <ProjectListItem
                         coverImgSrc={prop.coverImgSrc}

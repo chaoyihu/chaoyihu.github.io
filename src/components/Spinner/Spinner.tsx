@@ -35,6 +35,7 @@ const SpinnerImg = styled.img<SpinnerImgProps>`
 
 
 const Spinner: React.FC<SpinnerProps> = ({ SpinnerImgs }) => {
+
   const assembledSpinnerImgs = SpinnerImgs.map(spinnerImg => (
     <SpinnerImg
       src={spinnerImg.src}
@@ -46,7 +47,7 @@ const Spinner: React.FC<SpinnerProps> = ({ SpinnerImgs }) => {
   ));
 
   return (
-    <div style={{ position: 'relative', width: '50%', left: '25%', height: 'auto' }}>
+    <div className='spinner-container'>
       {assembledSpinnerImgs}
     </div>
   );
