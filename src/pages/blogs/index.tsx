@@ -1,4 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import dynamic from 'next/dynamic';
+
+// const DynamicBlogListing: React.FC<{ blogName: string }> = ({ blogName }) => {
+//     const [BlogInfo, setBlogInfo] = useState(null);
+
+//     useEffect(() => {
+//         const loadBlogInfo = async () => {
+//             const { default: Comp } = await import(`@/components/${blogName}`);
+//             setBlogInfo(() => Comp);
+//         };
+
+//         loadComponent();
+//     }, [componentName]);
+
+//     if (!Component) return null;
+
+//     return <Component />;
+// };
 
 export default function Blogs() {
     return (
@@ -15,3 +34,4 @@ export default function Blogs() {
         </div>
     )
 }
+

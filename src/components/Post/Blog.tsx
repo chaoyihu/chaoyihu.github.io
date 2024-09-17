@@ -25,7 +25,7 @@ const Blog: React.FC<BlogProps> = ({ blogInfo, htmlString }) => {
     };
 
     return (
-    <>
+    <div className='two-column-wrapper'>
         <div className='main-text'>
             <div className='blog-header'>
                 <BlogHeader info={blogInfo} />
@@ -35,7 +35,7 @@ const Blog: React.FC<BlogProps> = ({ blogInfo, htmlString }) => {
             </div>
         </div>
         {showTableOfContents ? <TableOfContents /> : null}
-    </>
+    </div>
     )
 }
 

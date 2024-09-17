@@ -5,16 +5,76 @@
 }
 
 .page-content {
-  display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  overflow: auto;
   width: 100%;
 }
 
-/* Blogs - two column */
+.page-content a {
+  color: $my-color-blue;
+  text-decoration: none;
+}
+
+.page-content a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* Blogs - layout for blog index Page */
+.blog-item {
+  display: column;
+  padding: 5px 5px 5px 5px;
+}
+
+.blog-item:hover {
+  background-color: rgb(215, 235, 255);
+}
+
+.blog-item-title h3 {
+  display: inline;
+}
+
+.blog-tag {
+  display: inline;
+  float: right;
+  font-size: 0.8em;
+  background-color: $my-color-green;
+  width: fit-content;
+  height: auto;
+  text-align: center;
+  padding: 2px 8px 2px 8px;
+  margin-left: 4px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.blog-item-description {
+  font-size: 1em;
+  padding-top: 5px;
+}
+
+.blog-item-date{
+  padding-top: 5px;
+  color: gray;
+}
+
+/* Blogs - Layout for blog content page */
+.two-column-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
 .main-text {
   width: 70%;
   height: 100%;
   overflow: auto;
+}
+
+.blog-header {
+  width: 100%;
+  background-color: $grey-color-light;
 }
 
 .blog-header div {
@@ -29,7 +89,7 @@
   width: 30%;
   height: 100%;
   overflow: auto;
-  background-color: #bdbdbd;
+  background-color: $grey-color-dark;
   padding: 30px;
 }
 
@@ -38,17 +98,19 @@
   padding: 0;
 }
 
+#toc-sidebar {
+  color: white;
+}
+
 #toc-sidebar a {
+  color: white;
   text-decoration: none;
   display: block;
 }
 
 #toc-sidebar a:hover {
   text-decoration: underline;
-}
-
-#toc-sidebar a:visited {
-  color: black;
+  color: $my-color-cyan;
 }
 
 #toc-sidebar ul {
@@ -60,6 +122,90 @@
   margin-bottom: 5px;
 }
 
+
+/* Projects - project content page */
+.project-content {
+  padding: 30px 20% 30px 20%;
+  width: 100%;
+}
+
+/* Projects - project index page */
+.project-index-wrapper {
+  display: flex;
+  padding: 30px 20% 30px 20%;
+  min-width: fit-content;
+}
+
+#project-pane {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.project-row {
+  padding: 20px 10px 20px 10px;
+  width: 100%;
+  display: column;
+  align-items: center;
+  border-bottom: rgb(215, 235, 255) solid 1px;
+}
+
+.project-row:hover {
+  background-color: rgb(215, 235, 255);
+}
+
+.project-row-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.project-row-content img {
+  display: inline-block;
+  width: 50%;
+  height: auto;
+}
+
+.project-row-content p{
+  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-headline-box {
+  display: inline-block;
+  width: 50%;
+  padding-left: 30px;
+}
+
+.project-headline-box p {
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.project-tag {
+  display: inline;
+  font-size: 0.8em;
+  background-color: $my-color-orange;
+  width: fit-content;
+  height: auto;
+  text-align: center;
+  padding: 2px 8px 2px 8px;
+  margin-right: 4px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* Index page */
+.index-intro {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+
 /* Header */
 
 .sticky-header {
@@ -67,7 +213,6 @@
   width: 100%;
   top: 0;
   z-index: 998;
-  padding-right: 60px;
   background-color: #f1f1f1;
 }
 
@@ -180,15 +325,42 @@
 }
 
 
-/**
- * Site footer
- */
+/* Header: github corner */
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
+
+
+
+/* Footer */
 .site-footer {
   border-top: 1px solid $grey-color-light;
   padding-top: $spacing-unit;
   padding-bottom: $spacing-unit;
   padding-left: $spacing-unit;
   padding-right: $spacing-unit;
+  background-color: #f1f1f1;
 }
 
 .footer-heading {
@@ -205,8 +377,17 @@
 .footer-col-wrapper {
   @include relative-font-size(0.9375);
   color: $grey-color;
-  margin-left: - calc($spacing-unit / 2);
+  padding-left: - calc($spacing-unit / 2);
   @extend %clearfix;
+}
+
+.footer-col-wrapper svg {
+  height: 1em;
+  vertical-align: middle;
+}
+
+.footer-col-wrapper path {
+  fill: gray;
 }
 
 .footer-col {
@@ -253,238 +434,3 @@
   }
 }
 
-
-
-/**
- * Page content
- */
-
-.page-heading {
-  @include relative-font-size(2);
-}
-
-.post-list-heading {
-  @include relative-font-size(1.75);
-}
-
-.post-list {
-  margin-left: 0;
-  list-style: none;
-
-  > li {
-    margin-bottom: $spacing-unit;
-  }
-}
-
-.post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
-}
-
-.post-link {
-  display: block;
-  @include relative-font-size(1.5);
-}
-
-
-
-/**
- * Posts
- */
-.post-header {
-  margin-bottom: $spacing-unit;
-}
-.post-header .post-title {
-  @include relative-font-size(2.625);
-}
-
-.post-title {
-  @include relative-font-size(2.625);
-  line-height: 1;
-
-  @include media-query($on-laptop) {
-    @include relative-font-size(2.25);
-  }
-}
-
-.post-content {
-  margin-bottom: $spacing-unit;
-
-  h1 {
-    @include relative-font-size(2);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(2.125);
-    }
-  }
-
-  h2 {
-    @include relative-font-size(1.625);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.75);
-    }
-  }
-
-  h3 {
-    @include relative-font-size(1.25);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.375);
-    }
-  }
-
-  h4 {
-    @include relative-font-size(1);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.125);
-    }
-  }
-}
-
-/* Custom - base*/
-.base-main-wrapper {
-  max-width: 60%;
-  min-width: 800px;
-  margin: 0 auto;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
-  @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    padding-right: calc($spacing-unit / 2);
-    padding-left: calc($spacing-unit / 2);
-  }
-}
-
-
-/* Custom - Blog Tags */
-.blog-item {
-  display: column;
-  padding: 5px 5px 5px 5px;
-}
-
-.blog-item:hover {
-  background-color: rgb(215, 235, 255);
-}
-
-.blog-item-title h3 {
-  display: inline;
-}
-
-.blog-tag {
-  display: inline;
-  float: right;
-  font-size: 0.8em;
-  background-color: $my-color-green;
-  width: fit-content;
-  height: auto;
-  text-align: center;
-  padding: 2px 8px 2px 8px;
-  margin-left: 4px;
-  border-radius: 12px;
-  white-space: nowrap;
-}
-
-.blog-item-description {
-  font-size: 1em;
-  padding-top: 5px;
-}
-
-.blog-item-date{
-  padding-top: 5px;
-  color: gray;
-}
-
-/* Custom - Projects */
-#project-pane {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-row {
-  padding: 20px 10px 20px 10px;
-  width: 100%;
-  display: column;
-  align-items: center;
-  border-bottom: rgb(215, 235, 255) solid 1px;
-}
-
-.project-row:hover {
-  background-color: rgb(215, 235, 255);
-}
-
-.project-row-content {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.project-row-content img {
-  display: inline-block;
-  width: 50%;
-  height: auto;
-}
-
-.project-row-content p{
-  display: inline-block;
-}
-
-.project-headline-box {
-  display: inline-block;
-  width: 50%;
-  padding-left: 30px;
-}
-
-.project-headline-box p {
-  padding-bottom: 5px;
-}
-
-.project-tag {
-  display: inline;
-  font-size: 0.8em;
-  background-color: $my-color-orange;
-  width: fit-content;
-  height: auto;
-  text-align: center;
-  padding: 2px 8px 2px 8px;
-  margin-right: 4px;
-  border-radius: 12px;
-  white-space: nowrap;
-}
-
-/* Index page */
-.index-intro {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-
-/* Github Corner */
-.github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
-}
-
-@keyframes octocat-wave {
-  0%, 100% {
-    transform: rotate(0);
-  }
-  20%, 60% {
-    transform: rotate(-25deg);
-  }
-  40%, 80% {
-    transform: rotate(10deg);
-  }
-}
-
-@media (max-width: 500px) {
-  .github-corner:hover .octo-arm {
-    animation: none;
-  }
-  .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
-  }
-}

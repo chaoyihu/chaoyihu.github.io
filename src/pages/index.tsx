@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Spinner, { SpinnerImgProps } from "@/components/Spinner/Spinner"
-// import Overlay from "@/components/Overlay/Overlay"
 
 
 export default function Home() {

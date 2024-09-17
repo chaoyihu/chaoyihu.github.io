@@ -8,10 +8,7 @@ interface BlogHeaderProps {
 
 const BlogHeader: React.FC<BlogHeaderProps> = ({ info }) => {
     return (
-        <div style={{
-            width: '100%',
-            backgroundColor: '#bdbdbd'
-        }}>
+        <div className="blog-header">
             <h1 id="post-title" className="post-title">{info.title}</h1>
             <p className="blog-item-date" style={{ display: 'flex', margin: '0', color: 'black'}}>
                 Date: {info.date} | 

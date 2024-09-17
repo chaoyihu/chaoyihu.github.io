@@ -17,7 +17,7 @@ $brand-color:      #2a7ae2 !default;
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
-$my-color-blue: #60A8FFff;
+$my-color-blue: #2a7ae2;
 $my-color-cyan: #9EE7E0ff;
 $my-color-green: #A2E277ff;
 $my-color-yellow: #F9FCBBff;
@@ -32,13 +32,7 @@ $content-width:    800px !default;
 $on-palm:          600px !default;
 $on-laptop:        800px !default;
 
-// Use media queries like this:
-// @include media-query($on-palm) {
-//   .wrapper {
-//     padding-right: calc($spacing-unit / 2);
-//     padding-left: calc($spacing-unit / 2);
-//   }
-// }
+
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
     @content;

@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from "@/components/Navbar/Navbar";
 import GitHubCorner from "@/components/Misc/GithubCorner";
+import Footer from "@/components/Footer/Footer";
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -16,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const ResizeHeader = () => {
       if (headerRef.current) {
         const elementHeight = headerRef.current.clientHeight;
-        const cornerWidth = cornerRef.current.querySelector('svg').clientWidth;
+        const cornerWidth = cornerRef.current?.querySelector('svg')?.clientWidth;
         setHeaderHeight(elementHeight);
         const header = document.querySelector('.sticky-header') as HTMLElement;
         if (header) {
@@ -29,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
       'resize', ResizeHeader
     );
     return () => window.removeEventListener(  // Clean up listener on unmount
-      'resize',ResizeHeader
+      'resize', ResizeHeader
     );
   }, []); // Empty dependency array ensures this runs once after the initial render
 
@@ -46,8 +47,10 @@ export default function App({ Component, pageProps }: AppProps) {
         </div>
         <Navbar />
       </div>
+
       <div className="page-content" style={{ height: `calc(100vh - ${headerHeight}px)` }}>
         <Component {...pageProps} />
+        <Footer />
       </div>
     </div>
   );
