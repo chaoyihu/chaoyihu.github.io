@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Spinner, { SpinnerImgProps } from "@/components/Spinner/Spinner"
-
+import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner"
+import Runner from '@/components/Animation/Runner';
 
 export default function Home() {
 
@@ -26,7 +26,10 @@ export default function Home() {
             <div className='animation-container'>
             {
                 showAnimation ? (
+                    <>
                     <Spinner SpinnerImgs={spinner}/>
+                    <Runner speed={10} />
+                    </>
                 ) : null
             }
             </div>

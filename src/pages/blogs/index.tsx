@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BlogInfo } from '@/components/Post/Blog';
-import Spinner, { SpinnerImgProps } from "@/components/Spinner/Spinner"
+import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner"
 
 type PathsResponse = string[];
 

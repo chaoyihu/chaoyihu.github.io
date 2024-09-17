@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProjectListItem, { ProjectListItemProps } from '@/components/Post/ProjectListItem';
-import Spinner, { SpinnerImgProps } from '@/components/Spinner/Spinner';
+import Spinner, { SpinnerImgProps } from '@/components/Animation/Spinner';
 
 export default function Projects() {
 
