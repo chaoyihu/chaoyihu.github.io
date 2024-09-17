@@ -1,7 +1,6 @@
 import createMDX from '@next/mdx';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import remarkAutolinkHeadings from 'remark-autolink-headings';
 
 // Resolve __filename and __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -20,9 +19,6 @@ const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      [remarkAutolinkHeadings, {
-        content: '# '
-      }],
     ],
   },
 });

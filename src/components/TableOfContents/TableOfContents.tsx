@@ -18,7 +18,7 @@ const TableOfContents = () => {
         const titleItem = document.createElement("p");
         const titleLink = document.createElement("a");
         if (title) {
-          titleLink.textContent = title.textContent ?? ''; 
+          titleLink.textContent = title.textContent ?? '';
           titleLink.href = "#" + title.id;
           titleItem.appendChild(titleLink);
           tocList.appendChild(titleItem);

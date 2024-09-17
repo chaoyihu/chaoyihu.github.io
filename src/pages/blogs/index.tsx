@@ -1,36 +1,65 @@
 import React, { useState, useEffect } from 'react';
+import { BlogInfo } from '@/components/Post/Blog';
 
-import dynamic from 'next/dynamic';
-
-// const DynamicBlogListing: React.FC<{ blogName: string }> = ({ blogName }) => {
-//     const [BlogInfo, setBlogInfo] = useState(null);
-
-//     useEffect(() => {
-//         const loadBlogInfo = async () => {
-//             const { default: Comp } = await import(`@/components/${blogName}`);
-//             setBlogInfo(() => Comp);
-//         };
-
-//         loadComponent();
-//     }, [componentName]);
-
-//     if (!Component) return null;
-
-//     return <Component />;
-// };
+type PathsResponse = string[];
 
 export default function Blogs() {
+
+    /* blogInfos:{ blogPath: blogInfo }*/
+    const [blogInfos, setBlogInfos] = useState<Map<string, BlogInfo>>(new Map());
+    const [loading, setLoading] = useState(true);
+   
+    useEffect(() => {
+        const fetchBlogs = async () => {
+          try {
+            const response = await fetch('/api/getAllBlogs');
+            const data: PathsResponse = await response.json();
+    
+            let infos = new Map<string, BlogInfo>();
+    
+            for (const blogPath of data) {
+                if (blogPath === '/index') { continue; }
+                const module = await import(`@/pages/blogs${blogPath}`);
+                infos.set(blogPath, module.info);
+            }
+    
+            setBlogInfos(infos);
+          } catch (error) {
+            console.error('Error fetching blog data:', error);
+          }
+        };
+    
+        fetchBlogs().then(() => {
+            for (let [path, info] of blogInfos) {
+                console.log(path, info.title);
+            }
+            setLoading(false);
+        });
+      }, []);
+
     return (
-        <div>
-            <h1>Blogs</h1>
-            <ul>
-                <li><a href='/blogs/build-c-extension-for-python'>build-c-extension-for-python</a></li>
-                <li><a href='/blogs/solving-a-tzinfo-issue'>solving-a-tzinfo-issue</a></li>
-                <li><a href='/blogs/fast-fibonacci'>fast-fibonacci</a></li>
-                <li><a href='/blogs/git-detached-head'>git-detached-head</a></li>
-                <li><a href='/blogs/run-multiple-apps-on-same-server-using-nginx'>run-multiple-apps-on-same-server-using-nginx</a></li>
-                <li><a href='/blogs/deploying-dockerized-web-app-to-amazon-ec2'>deploying-dockerized-web-app-to-amazon-ec2</a></li>
-            </ul>
+        <div className='blogs-index-wrapper'>
+        <h1>Blogs</h1>
+        {
+            loading ? (
+                <p>Loading...</p>
+            ) : (
+                Array.from(blogInfos.entries()).map(([path, info], idx) => (
+                    <div className="blog-item" key={idx}>
+                        <div className="blog-item-title">
+                            <h3><a href={'/blogs' + path}>{info.title}</a></h3>
+                            {info.tags.map((tag) => <span className="blog-tag">{ tag }</span>)}
+                        </div>
+                        <div className="blog-item-description">
+                            {info.description}
+                        </div>
+                        <div className="blog-item-date">
+                            <time className="dt-published">{ info.date }</time>
+                        </div>
+                    </div>
+                ))
+            )
+        }
         </div>
     )
 }

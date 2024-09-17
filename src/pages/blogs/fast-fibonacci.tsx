@@ -7,7 +7,7 @@ import Content from '@/markdown/blogs/fast-fibonacci.mdx';
 // const content = ReactDOMServer.renderToString(<Content />);
 const content = 'Need to implement Math support for MDX';
 
-const info: BlogInfo = {
+export const info: BlogInfo = {
     title: "Fast Fibonacci",
     date: '2024-03-17',
     tags: ['Algorithm'],

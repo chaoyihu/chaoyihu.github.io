@@ -6,7 +6,7 @@ import Content from '@/markdown/blogs/deploying-dockerized-web-app-to-amazon-ec2
 
 const content = ReactDOMServer.renderToString(<Content />);
 
-const info: BlogInfo = {
+export const info: BlogInfo = {
     title: "Running Web App on Amazon EC2 with Docker Compose",
     date: '2024-02-10',
     tags: ['AWS', 'Amazon EC2', 'Docker'],

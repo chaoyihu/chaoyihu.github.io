@@ -21,6 +21,13 @@
 }
 
 /* Blogs - layout for blog index Page */
+.blogs-index-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20% 30px 20%;
+  min-width: fit-content;
+}
+
 .blog-item {
   display: column;
   padding: 5px 5px 5px 5px;
@@ -132,15 +139,14 @@
 /* Projects - project index page */
 .project-index-wrapper {
   display: flex;
+  flex-direction: column;
   padding: 30px 20% 30px 20%;
   min-width: fit-content;
+  overflow-y: auto;
 }
 
 #project-pane {
-  display: flex;
   width: 100%;
-  flex-direction: column;
-  overflow-y: auto;
 }
 
 .project-row {

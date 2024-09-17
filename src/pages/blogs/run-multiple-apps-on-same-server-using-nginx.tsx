@@ -6,7 +6,7 @@ import Content from '@/markdown/blogs/run-multiple-apps-on-same-server-using-ngi
 
 const content = ReactDOMServer.renderToString(<Content />);
 
-const info: BlogInfo = {
+export const info: BlogInfo = {
     title: "Run Multiple Apps on One EC2 Instance using NGINX",
     date: '2024-02-23',
     tags: ['NGINX', 'AWS'],

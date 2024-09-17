@@ -5,7 +5,7 @@ import Content from '@/markdown/blogs/solving-a-tzinfo-issue.mdx';
 
 const content = ReactDOMServer.renderToString(<Content />);
 
-const info: BlogInfo = {
+export const info: BlogInfo = {
     title: "Investigating a timezone configuring issue in Docker",
     date: '2024-03-22',
     tags: ['Linux', 'Docker'],
