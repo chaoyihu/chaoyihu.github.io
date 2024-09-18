@@ -40,7 +40,7 @@
 .animation-container {
   position: relative;
   width: 100%;
-  height: 30vw;
+  height: 32vw;
   max-height: 500px;
   display: flex;
   justify-content: center;
@@ -57,21 +57,27 @@
 .runner-container {
   display: inline-block;
   position: absolute;
-  bottom: 0;
+  bottom: -36%;
   left: 0;
-  height: 100%;
+  height: fit-content;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.runner-images {
+.runner-immobile {
+  width: 30%;
+}
+
+.runner-slider {
   width: 100%;
   display: inline-block;
   animation: 10s run infinite linear;
 }
 
-.runner-images img {
-  width: 25%;  /* 100% divided by number of images in runner-images */
+.runner-slider img {
+  width: 51%; 
+  /* 100% divided by 4 (number of images in runner-slider) */
+  /* slightly wider (26% instead of 25%) to avoid seams */
 }
 
 @keyframes run {
