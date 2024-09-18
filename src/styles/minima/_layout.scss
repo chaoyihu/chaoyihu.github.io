@@ -32,7 +32,12 @@
 
 #home-pane {
   padding: 30px 20% 30px 20%;
+  width: 100%;
   background-color: white;
+}
+
+.home-section {
+  padding-bottom: 10px;
 }
 
 
@@ -40,10 +45,12 @@
 .animation-container {
   position: relative;
   width: 100%;
-  height: 30vw;
+  height: 35vh;
+  min-height: 300px;
   max-height: 500px;
   display: flex;
   justify-content: center;
+  overflow-y: hidden;
 }
 
 .spinner-container {
@@ -55,32 +62,12 @@
 }
 
 .runner-container {
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.runner-images {
   width: 100%;
   display: inline-block;
-  animation: 10s run infinite linear;
-}
-
-.runner-images img {
-  width: 25%;  /* 100% divided by number of images in runner-images */
-}
-
-@keyframes run {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
+  position: absolute;
+  left: 0;
+  overflow-x: hidden;
+  white-space: nowrap;
 }
 
 
@@ -218,13 +205,14 @@
 }
 
 .project-row {
-  padding: 10px;
-  min-height: 260px;
+  padding: 10px 30px 10px 30px;
+  margin-bottom: 10px;
+  min-height: 300px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: rgb(215, 235, 255) solid 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project-row:hover {
@@ -301,7 +289,7 @@
 
 .nav {
   display: flex;
-  padding: 8px 0px 8px 16px;
+  padding: 0px 4px 0px 16px;
   justify-content: space-between;
   align-items: center;
 }
@@ -328,10 +316,10 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 60px;
+  top: 48px;
   width: 288px;
   row-gap: 24px;
-  padding: 24px 16px;
+  padding: 16px 16px;
   right: -288px;
   min-height: fit-content;
   background-color: #f1f1f1;
@@ -384,7 +372,7 @@
     content: '';
     position: absolute;
     width: 0%;
-    bottom: -16px;
+    bottom: -12px;
     left: 0;
     height: 6px;
     transition: all 0.2s;
@@ -394,6 +382,21 @@
   .nav__link:hover::before,
   .nav__link.active::before {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .project-row-content {
+    flex-direction: column;
+  }
+
+  .project-row-content img {
+    width: 100%;
+  }
+
+  .project-headline-box {
+    width: 100%;
+    padding-left: 0;
   }
 }
 
@@ -506,4 +509,3 @@
     width:         calc(100% - (#{$spacing-unit} / 2));
   }
 }
-

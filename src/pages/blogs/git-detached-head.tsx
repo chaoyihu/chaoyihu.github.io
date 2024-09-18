@@ -16,6 +16,6 @@ export const info: BlogInfo = {
 
 export default function Page() {
     return (
-    <Blog blogInfo={info} htmlString={content}/>
+        <Blog blogInfo={info} htmlString={content}/>
     );
 }

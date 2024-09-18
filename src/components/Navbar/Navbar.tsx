@@ -17,6 +17,11 @@ const MENU_LIST = [
         text: "Blogs",
         href: "/blogs",
         idx: 2
+    },
+    {
+        text: "Contact",
+        href: "/contact",
+        idx: 3
     }
 ]
 
@@ -37,7 +42,7 @@ const Navbar = () => {
     return (
         <nav className='nav'>
             <Link href="/" onClick={() => setActiveIdx(0)}>
-                    chaoyihu.github.io
+                <img src="/favicon.ico" width='50px' />
             </Link>
 
             <div onClick={() => setNavActive(!navActive)} className="nav__menu-bar">

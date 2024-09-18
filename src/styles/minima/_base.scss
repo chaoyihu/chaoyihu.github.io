@@ -168,29 +168,9 @@ pre {
   }
 }
 
-
-/**
- * Wrapper
- */
-.wrapper {
-  max-width: 100%;
-  height: 100%;
-  overflow: auto;
-  padding-right: $spacing-unit * 3;
-  padding-left: $spacing-unit * 3;
-  @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    padding-right: calc($spacing-unit / 2);
-    padding-left: calc($spacing-unit / 2);
-  }
-}
-
-
 /**
  * Clearfix
+ * ensures the parent container expands to contain its floated children
  */
 %clearfix:after {
   content: "";

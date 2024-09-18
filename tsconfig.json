@@ -27,7 +27,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/lib/getBlogsData.js"  ],
   "exclude": [
     "node_modules"
   ]

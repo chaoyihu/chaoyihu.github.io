@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                     <p>&copy; 2024 Chaoyi Hu. All rights reserved.</p>
                 </div>
                 <div className="footer-col footer-col-3">
-                    <p>Curiosity is a gift. 🧐</p>
+                    <p>Curiosity is a gift.</p>
                 </div>
             </div>
         </footer>

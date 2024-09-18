@@ -21,21 +21,21 @@ const Blog: React.FC<BlogProps> = ({ blogInfo, htmlString }) => {
     const [showTableOfContents, setShowTableOfContents] = useState(false);
 
     const handleHtmlContentRendered = () => {
-      setShowTableOfContents(true);
+        setShowTableOfContents(true);
     };
 
     return (
-    <div className='two-column-wrapper'>
-        <div className='main-text'>
-            <div className='blog-header'>
-                <BlogHeader info={blogInfo} />
+        <div className='two-column-wrapper'>
+            <div className='main-text'>
+                <div className='blog-header'>
+                    <BlogHeader info={blogInfo} />
+                </div>
+                <div className='blog-content'>
+                    <HtmlContent htmlString={htmlString} onRendered={handleHtmlContentRendered} />
+                </div>
             </div>
-            <div className='blog-content'>
-                <HtmlContent htmlString={htmlString} onRendered={handleHtmlContentRendered} />
-            </div>
+            {showTableOfContents ? <TableOfContents /> : null}
         </div>
-        {showTableOfContents ? <TableOfContents /> : null}
-    </div>
     )
 }
 
