@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProjectListItem, { ProjectListItemProps } from '@/components/Post/ProjectListItem';
 import Spinner, { SpinnerImgProps } from '@/components/Animation/Spinner';
+import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
 
 export default function Projects() {
 
@@ -117,23 +118,88 @@ export default function Projects() {
       return () => clearTimeout(timer);
     }, []);
 
-    const spinner: SpinnerImgProps[] = [
-        { src: "/images/animation/star-1.webp", layer: -101, cycle: 60, angle: 359, key: 1 },
-        { src: "/images/animation/star-2.webp", layer: -102, cycle: 40, angle: 359, key: 2 },
-        { src: "/images/animation/star-3.webp", layer: -103, cycle: 280, angle: 359, key: 3 },
-        { src: "/images/animation/star-4.webp", layer: -104, cycle: 400, angle: -359, key: 4 },
-        { src: "/images/animation/star-5.webp", layer: -105, cycle: 600, angle: 359, key: 5 }
+    const spinners: SpinnerImgProps[] = [
+        {
+            src: "/images/animation/spinner/plant-1.webp",
+            layer: -101, cycle: 60, angle: 359, key: 1
+        },
+        {
+            src: "/images/animation/spinner/plant-2.webp",
+            layer: -102, cycle: 20, angle: -359, key: 2
+        },
+        {
+            src: "/images/animation/spinner/plant-3.webp",
+            layer: -103, cycle: 280, angle: 359, key: 3
+        },
+        {
+            src: "/images/animation/spinner/plant-4.webp",
+            layer: -104, cycle: 400, angle: -359, key: 4
+        },
+        {
+            src: "/images/animation/spinner/plant-5.webp",
+            layer: -105, cycle: 600, angle: 359, key: 5
+        }
+    ];
+
+    const sliders: RunnerDivProps[] = [
+        {
+            images: [
+                "/images/animation/runner/robot.gif"
+            ],
+            layer: -10, cycle: 0, key: 0, mobile: false, bottom: '3%'
+        },
+        {
+            images: [
+                "/images/animation/runner/floor-b.webp",
+                "/images/animation/runner/floor-b.webp",
+                "/images/animation/runner/floor-b.webp",
+                "/images/animation/runner/floor-b.webp"
+            ],
+            layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
+        },
+        {
+            images: [
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-b1.webp",
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-b2.webp"
+            ],
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
+        },
+        {
+            images: [
+
+                "/images/animation/runner/landscape-b3.webp",
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-blank.webp"
+            ],
+            layer: -40, cycle: 480, key: 2, mobile: true, bottom: '-30%'
+        },
     ];
 
 
     return (
         <div className='project-index-wrapper'>
-            <div className='animation-container'>
-            {
-                showAnimation ? (
-                    <Spinner SpinnerImgs={spinner}/>
-                ) : null
-            }
+            <div className='animation-container' style={{ backgroundColor: 'darkgreen', zIndex: -999}}>
+                {
+                    showAnimation ? (
+                        <>
+                            <Spinner spinnerImgs={spinners} />
+                            <Runner runnerDivs={sliders} />
+                        </>
+                    ) : null
+                }
+            </div>
+            <div className="poem-section">
+                <p>The robot stumbled to a garden vast,<br/>
+                    Where sunlight kissed the petals, unsurpassed.<br/>
+                    Projects bloom like flowers bright,<br/>
+                    Each task a spark, a unique delight.</p>
+                <p>The emerald vines told him to try,<br/>
+                    they taught him love, and how to sigh.<br/>
+                    He learned from roots, deep along the lines,<br/>
+                    That life is rich in its complex designs.</p>
             </div>
             <div id="project-pane">
                 <h1 className="post-title">Projects</h1>

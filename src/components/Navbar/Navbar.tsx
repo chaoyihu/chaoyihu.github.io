@@ -17,6 +17,11 @@ const MENU_LIST = [
         text: "Blogs",
         href: "/blogs",
         idx: 2
+    },
+    {
+        text: "Contact",
+        href: "/contact",
+        idx: 3
     }
 ]
 

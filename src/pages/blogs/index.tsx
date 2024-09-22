@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BlogInfo } from '@/components/Post/Blog';
-import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner"
+import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
+import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
 
 type PathsResponse = string[];
 
@@ -47,25 +48,92 @@ export default function Blogs() {
       return () => clearTimeout(timer);
     }, []);
   
-    const spinner: SpinnerImgProps[] = [
-        { src: "/images/animation/plant-1.webp", layer: -101, cycle: 60, angle: 359, key: 1 },
-        { src: "/images/animation/plant-2.webp", layer: -102, cycle: 40, angle: 359, key: 2 },
-        { src: "/images/animation/plant-3.webp", layer: -103, cycle: 280, angle: 359, key: 3 },
-        { src: "/images/animation/plant-4.webp", layer: -104, cycle: 400, angle: -359, key: 4 },
-        { src: "/images/animation/plant-5.webp", layer: -105, cycle: 600, angle: 359, key: 5 }
+
+    const spinners: SpinnerImgProps[] = [
+        {
+            src: "/images/animation/spinner/candy-1.webp",
+            layer: -101, cycle: 60, angle: 359, key: 1
+        },
+        {
+            src: "/images/animation/spinner/candy-2.webp",
+            layer: -102, cycle: 20, angle: -359, key: 2
+        },
+        {
+            src: "/images/animation/spinner/candy-3.webp",
+            layer: -103, cycle: 280, angle: 359, key: 3
+        },
+        {
+            src: "/images/animation/spinner/candy-4.webp",
+            layer: -104, cycle: 400, angle: -359, key: 4
+        },
+        {
+            src: "/images/animation/spinner/candy-5.webp",
+            layer: -105, cycle: 600, angle: 359, key: 5
+        }
+    ];
+
+    const sliders: RunnerDivProps[] = [
+        {
+            images: [
+                "/images/animation/runner/robot.gif"
+            ],
+            layer: -10, cycle: 0, key: 0, mobile: false, bottom: '3%'
+        },
+        {
+            images: [
+                "/images/animation/runner/floor-c.webp",
+                "/images/animation/runner/floor-c.webp",
+                "/images/animation/runner/floor-c.webp",
+                "/images/animation/runner/floor-c.webp"
+            ],
+            layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
+        },
+        {
+            images: [
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-c1.webp",
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-c2.webp"
+            ],
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
+        },
+        {
+            images: [
+
+                "/images/animation/runner/landscape-c3.webp",
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/landscape-blank.webp"
+            ],
+            layer: -40, cycle: 480, key: 2, mobile: true, bottom: '-30%'
+        },
     ];
 
     return (
         <div className='blogs-index-wrapper'>
-            <div className='animation-container'>
-            {
-                showAnimation ? (
-                    <Spinner SpinnerImgs={spinner}/>
-                ) : null
-            }
+            <div className='animation-container' style={{ backgroundColor: 'chocolate', zIndex: -999}}>
+                {
+                    showAnimation ? (
+                        <>
+                            <Spinner spinnerImgs={spinners} />
+                            <Runner runnerDivs={sliders} />
+                        </>
+                    ) : null
+                }
             </div>
             <div id='blogs-pane'>
                 <h1 className='post-title'>Blogs</h1>
+                <div className="poem-section">
+                    <p>Onward it travels, through realms so vast,<br/>
+                        With a ruby heart, its spirit steadfast.<br/>
+                        Mountains of pastries, rivers of cream,<br/>
+                        In this candy world, he dared to dream.</p>
+
+                    <p>Lollipops glimmered like stars in the night,<br/>
+                        Chocolate waterfalls cascaded in flight.<br/>
+                        Cinnamon in the air, sprinkles on the floor,<br/>
+                        Endless wonders, so much to explore!</p>
+                </div>
                 {
                     loading ? (
                         <p>Loading...</p>
