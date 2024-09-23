@@ -2,12 +2,33 @@ import React from "react";
 import styled, { keyframes } from 'styled-components';
 
 export interface RunnerDivProps {
-    images: string[];  // sources list of slider images
-    layer: number; // z-index
-    cycle: number;  // animation cycle in seconds. smaller cycle = faster sliding
+    /*
+        images: sources list of slider images. To ensure seamless sliding, the
+            list should have same prefix and suffix.
+            Example: [A, B, C, D, A, B] slides from right to left like this (image
+                    width is 50% each):
+                                    -------------
+                                    |  A  |  B  |  C  |  D  |  A  |  B  |
+                                    | (visible) |   (outside of screen)
+                                    -------------
+                      <<<<  sliding right to left (200%)  <<<<
+                                    -------------
+            |  A  |  B  |  C  |  D  |  A  |  B  |  (the visible part is the same
+              (outside of screen)   | (visible) |   as the starting state)
+                                    -------------
+        layer: z-index.
+        cycle: animation cycle in seconds. smaller cycle = faster sliding.
+        key: unique id.
+        mobile: true for sliding components such as moving landscapes. false for
+            components staying in place, such as the robot.
+        bottom: position.
+    */
+    images: string[];
+    layer: number;
+    cycle: number;
     key: number;
     mobile: boolean;
-    bottom: string;  // position
+    bottom: string;
 }
 
 interface RunnerProps {
@@ -49,9 +70,7 @@ const Runner: React.FC<RunnerProps> = ({ runnerDivs }) => {
                                 bottom={bottom}
                             >
                                 {images.map((src, idx) => ( <img src={src} width="50%" key={idx} /> ))}
-                                {/* the sliding images should be duplicated 
-                                to ensure continuous sliding */}
-                                {images.map((src, idx) => ( <img src={src} width="50%" key={idx} /> ))}
+                                
                             </RunnerSlider> 
                         ) : (
                             <RunnerImmobile
@@ -62,8 +81,6 @@ const Runner: React.FC<RunnerProps> = ({ runnerDivs }) => {
                                 mobile={mobile}
                                 bottom={bottom}
                             >
-                                {/* some images, such as the robot, has
-                                a fixed position */}
                                 {images.map((src, idx) => ( <img src={src} width='6%' key={idx} /> ))}
                             </RunnerImmobile>
                         )

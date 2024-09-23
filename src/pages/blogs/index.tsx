@@ -84,34 +84,39 @@ export default function Blogs() {
                 "/images/animation/runner/floor-c.webp",
                 "/images/animation/runner/floor-c.webp",
                 "/images/animation/runner/floor-c.webp",
+                "/images/animation/runner/floor-c.webp",
+                "/images/animation/runner/floor-c.webp",
                 "/images/animation/runner/floor-c.webp"
             ],
             layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
         },
         {
             images: [
-                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-c1.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-c2.webp"
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-c2.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-c1.webp",
             ],
             layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
         },
         {
             images: [
-
                 "/images/animation/runner/landscape-c3.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp"
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-c3.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-c3.webp",
+                "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 480, key: 2, mobile: true, bottom: '-30%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
         },
     ];
 
     return (
         <div className='blogs-index-wrapper'>
-            <div className='animation-container' style={{ backgroundColor: 'chocolate', zIndex: -999}}>
+            <div className='animation-container' style={{ backgroundColor: 'wheat', zIndex: -999}}>
                 {
                     showAnimation ? (
                         <>

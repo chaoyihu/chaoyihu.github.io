@@ -47,28 +47,33 @@ export default function Home() {
                 "/images/animation/runner/floor-a.webp",
                 "/images/animation/runner/floor-a.webp",
                 "/images/animation/runner/floor-a.webp",
+                "/images/animation/runner/floor-a.webp",
+                "/images/animation/runner/floor-a.webp",
                 "/images/animation/runner/floor-a.webp"
             ],
             layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
         },
         {
             images: [
+                "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-a1.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-a2.webp"
+                "/images/animation/runner/landscape-a2.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-a1.webp",
             ],
             layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
         },
         {
             images: [
-
                 "/images/animation/runner/landscape-a3.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp"
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-a3.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-a3.webp",
+                "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 480, key: 2, mobile: true, bottom: '-40%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
         },
     ];
 

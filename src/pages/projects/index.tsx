@@ -153,35 +153,40 @@ export default function Projects() {
                 "/images/animation/runner/floor-b.webp",
                 "/images/animation/runner/floor-b.webp",
                 "/images/animation/runner/floor-b.webp",
-                "/images/animation/runner/floor-b.webp"
+                "/images/animation/runner/floor-b.webp",
+                "/images/animation/runner/floor-b.webp",
+                "/images/animation/runner/floor-b.webp",
             ],
             layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
         },
         {
             images: [
-                "/images/animation/runner/landscape-blank.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-b1.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-b2.webp"
+                "/images/animation/runner/landscape-b2.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp",
             ],
             layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
         },
         {
             images: [
-
                 "/images/animation/runner/landscape-b3.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp",
-                "/images/animation/runner/landscape-blank.webp"
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-b3.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-b3.webp",
+                "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 480, key: 2, mobile: true, bottom: '-30%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
         },
     ];
 
 
     return (
         <div className='project-index-wrapper'>
-            <div className='animation-container' style={{ backgroundColor: 'darkgreen', zIndex: -999}}>
+            <div className='animation-container' style={{ backgroundColor: 'honeydew', zIndex: -999}}>
                 {
                     showAnimation ? (
                         <>
