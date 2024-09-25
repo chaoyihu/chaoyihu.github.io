@@ -7,6 +7,19 @@ export default function Projects() {
 
     const projectProps: ProjectListItemProps[] = [
         {
+            coverImgSrc: "/images/projects/chaoyihu.github.io/chaoyihu.github.io-cover.png",
+            tags: ["Next.js", "React", "TypeScript"],
+            title: "chaoyihu.github.io",
+            description: `Hey, this is the website you are looking at! I call this a good example 
+            of self-reference. 😉`,
+            links: [
+                {
+                    href: "/projects/chaoyihu.github.io",
+                    text: "Read a poem >>>"
+                }
+            ]
+        },
+        {
             coverImgSrc: "/images/projects/ultrasound-image-segmentation/ultrasound-project-result.png",
             tags: ["Image Processing", "Deep Learning", "Python"],
             title: "Semantic Segmentation of Ultrasound Images",
@@ -60,7 +73,7 @@ export default function Projects() {
             ]
         },
         {
-            coverImgSrc: "/images/projects/sprinting/sprinting-project-cover.gif",
+            coverImgSrc: "/images/projects/sprinting/sprinting-project-cover.png",
             tags: ["Web Application", "Python", "JavaScript", "Web Framework", 
                 "Redis", "Pub/Sub", "WebSocket"],
             title: "Sprinting: Web-Based Sprint Planning and Collaboration",
@@ -146,7 +159,7 @@ export default function Projects() {
             images: [
                 "/images/animation/runner/robot.gif"
             ],
-            layer: -10, cycle: 0, key: 0, mobile: false, bottom: '3%'
+            layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
         },
         {
             images: [
@@ -157,7 +170,7 @@ export default function Projects() {
                 "/images/animation/runner/floor-b.webp",
                 "/images/animation/runner/floor-b.webp",
             ],
-            layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-48%'
         },
         {
             images: [
@@ -168,7 +181,7 @@ export default function Projects() {
                 "/images/animation/runner/blank.webp",
                 "/images/animation/runner/blank.webp",
             ],
-            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-50%'
         },
         {
             images: [
@@ -179,10 +192,9 @@ export default function Projects() {
                 "/images/animation/runner/landscape-b3.webp",
                 "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-44%'
         },
     ];
-
 
     return (
         <div className='project-index-wrapper'>
@@ -195,16 +207,6 @@ export default function Projects() {
                         </>
                     ) : null
                 }
-            </div>
-            <div className="poem-section">
-                <p>The robot stumbled to a garden vast,<br/>
-                    Where sunlight kissed the petals, unsurpassed.<br/>
-                    Projects bloom like flowers bright,<br/>
-                    Each task a spark, a unique delight.</p>
-                <p>The emerald vines told him to try,<br/>
-                    they taught him love, and how to sigh.<br/>
-                    He learned from roots, deep along the lines,<br/>
-                    That life is rich in its complex designs.</p>
             </div>
             <div id="project-pane">
                 <h1 className="post-title">Projects</h1>

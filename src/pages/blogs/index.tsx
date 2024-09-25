@@ -77,7 +77,7 @@ export default function Blogs() {
             images: [
                 "/images/animation/runner/robot.gif"
             ],
-            layer: -10, cycle: 0, key: 0, mobile: false, bottom: '3%'
+            layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
         },
         {
             images: [
@@ -88,7 +88,7 @@ export default function Blogs() {
                 "/images/animation/runner/floor-c.webp",
                 "/images/animation/runner/floor-c.webp"
             ],
-            layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-48%'
         },
         {
             images: [
@@ -99,7 +99,7 @@ export default function Blogs() {
                 "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-c1.webp",
             ],
-            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-50%'
         },
         {
             images: [
@@ -110,7 +110,7 @@ export default function Blogs() {
                 "/images/animation/runner/landscape-c3.webp",
                 "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-50%'
         },
     ];
 
@@ -128,17 +128,6 @@ export default function Blogs() {
             </div>
             <div id='blogs-pane'>
                 <h1 className='post-title'>Blogs</h1>
-                <div className="poem-section">
-                    <p>Onward it travels, through realms so vast,<br/>
-                        With a ruby heart, its spirit steadfast.<br/>
-                        Mountains of pastries, rivers of cream,<br/>
-                        In this candy world, he dared to dream.</p>
-
-                    <p>Lollipops glimmered like stars in the night,<br/>
-                        Chocolate waterfalls cascaded in flight.<br/>
-                        Cinnamon in the air, sprinkles on the floor,<br/>
-                        Endless wonders, so much to explore!</p>
-                </div>
                 {
                     loading ? (
                         <p>Loading...</p>

@@ -22,13 +22,15 @@ export interface RunnerDivProps {
         mobile: true for sliding components such as moving landscapes. false for
             components staying in place, such as the robot.
         bottom: position.
+        width: for customizing width of immobile components.
     */
     images: string[];
     layer: number;
-    cycle: number;
-    key: number;
     mobile: boolean;
     bottom: string;
+    key: number;
+    cycle?: number;  // only if mobile is true
+    width?: string;  // only if mobile is false
 }
 
 interface RunnerProps {
@@ -57,31 +59,31 @@ const RunnerImmobile = styled.div<RunnerDivProps>`
 const Runner: React.FC<RunnerProps> = ({ runnerDivs }) => {
     return (
         <div>    
-            {runnerDivs.map(({ images, layer, cycle, key, mobile, bottom }) => (
+            {runnerDivs.map(({ images, layer, cycle, key, mobile, bottom, width }) => (
                 <div className="runner-container" style={{ zIndex: layer, bottom: bottom}}>
                     {
                         mobile ? (
                             <RunnerSlider
                                 images={images}
                                 layer={layer}
-                                cycle={cycle}
-                                key={key}
                                 mobile={mobile}
                                 bottom={bottom}
+                                key={key}
+                                cycle={cycle}
                             >
-                                {images.map((src, idx) => ( <img src={src} width="50%" key={idx} /> ))}
+                                {images.map((src, idx) => ( <img src={src} width="50%" key={idx}/> ))}
                                 
                             </RunnerSlider> 
                         ) : (
                             <RunnerImmobile
                                 images={images}
                                 layer={layer}
-                                cycle={cycle}
-                                key={key}
                                 mobile={mobile}
                                 bottom={bottom}
+                                key={key}
+                                width={width}
                             >
-                                {images.map((src, idx) => ( <img src={src} width='6%' key={idx} /> ))}
+                                {images.map((src, idx) => ( <img src={src} width={width} key={idx}/> ))}
                             </RunnerImmobile>
                         )
                     }

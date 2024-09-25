@@ -41,7 +41,7 @@ export default function Contact () {
                 images: [
                     "/images/animation/runner/robot.gif"
                 ],
-                layer: -10, cycle: 0, key: 0, mobile: false, bottom: '3%'
+                layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
             },
             {
                 images: [
@@ -52,7 +52,7 @@ export default function Contact () {
                     "/images/animation/runner/floor-d.webp",
                     "/images/animation/runner/floor-d.webp"
                 ],
-                layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
+                layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-46%'
             },
             {
                 images: [
@@ -63,7 +63,7 @@ export default function Contact () {
                     "/images/animation/runner/blank.webp",
                     "/images/animation/runner/landscape-d1.webp",
                 ],
-                layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
+                layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-48%'
             },
             {
                 images: [
@@ -85,7 +85,7 @@ export default function Contact () {
                     "/images/animation/runner/robot-friend-1.gif",
                     "/images/animation/runner/robot-friend-2.gif"
                 ],
-                layer: -11, cycle: 30, key: 4, mobile: true, bottom: '-64%'
+                layer: -11, cycle: 40, key: 4, mobile: true, bottom: '-76%'
             },
         ];
 
@@ -101,16 +101,18 @@ export default function Contact () {
                     ) : null
                 }
             </div>
-            <div className="poem-section">
-                <p>Yet deep in his core, the ruby heart sighed,<br/>
-                    For beauty and wonder were often belied.<br/>
-                    He carried the lessons from each vibrant land,<br/>
-                    A quest for connection, a touch of a hand.</p>
-
-                    <p>So onward he traveled, through worlds yet unseen,<br/>
-                    A robot with purpose, a seeker, a dream.<br/>
-                    With a ruby heart glowing, warm and true,<br/>
-                    He roamed every realm, always anew.</p>
+            <div id='home-pane'>
+                <h1 className="post-title">Get in Touch!</h1>
+                <p>I’d love to hear from you! Whether you have a question, want to collaborate, or 
+                    just want to connect for future opportunities, feel free to reach out.</p>
+                <h2>LinkedIn</h2>
+                <p>Connect with me on LinkedIn to start a conversation, and I will respond promptly:
+                    <a href='https://www.linkedin.com/in/hu-chaoyi'> https://www.linkedin.com/in/hu-chaoyi</a>
+                </p>
+                <h2>GitHub</h2>
+                <p>Follow me on GitHub to see my latest activities and interests as a developer:
+                    <a href='https://github.com/chaoyihu'> https://github.com/chaoyihu</a>
+                </p>
             </div>
         </div>
     )

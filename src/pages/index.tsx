@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
 import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
+import ProjectListItem, { ProjectListItemProps } from '@/components/Post/BlogListItem';
+import FileLinkEmbed from '@/components/Misc/FileLinkEmbed';
+
+import Intro from '@/markdown/home-intro.mdx';
 
 export default function Home() {
 
@@ -40,7 +44,7 @@ export default function Home() {
             images: [
                 "/images/animation/runner/robot.gif"
             ],
-            layer: -10, cycle: 0, key: 0, mobile: false, bottom: '3%'
+            layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
         },
         {
             images: [
@@ -51,7 +55,7 @@ export default function Home() {
                 "/images/animation/runner/floor-a.webp",
                 "/images/animation/runner/floor-a.webp"
             ],
-            layer: -20, cycle: 30, key: 1, mobile: true, bottom: '-36%'
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-48%'
         },
         {
             images: [
@@ -62,7 +66,7 @@ export default function Home() {
                 "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-a1.webp",
             ],
-            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-40%'
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-50%'
         },
         {
             images: [
@@ -73,13 +77,75 @@ export default function Home() {
                 "/images/animation/runner/landscape-a3.webp",
                 "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-58%'
         },
     ];
 
+    const projectProps: ProjectListItemProps[] = [
+        {
+            coverImgSrc: "/images/projects/ultrasound-image-segmentation/ultrasound-project-result.png",
+            tags: ["Image Processing", "Deep Learning", "Python"],
+            title: "Semantic Segmentation of Ultrasound Images",
+            description: `Collaborated with clinicians at Beijing Anzhen Hospital to 
+            build a deep learning network that segments anatomical structures in 
+            ultrasound images.`,
+            links: [
+                {
+                    href: "/projects/ultrasound-image-segmentation",
+                    text: "More Details>>>"
+                }
+            ]
+        },
+        {
+            coverImgSrc: "/images/projects/behavioral-experiment/maze-setting.png",
+            tags: ["Video Processing", "Python", "MATLAB", "NumPy", "Pandas"],
+            title: "Development of laboratory software tools to assist animal experiment",
+            description: `Video processing, batch processing, data visualization, and GUI 
+            development to assist scientific research.`,
+            links: [
+                {
+                    href: "/projects/behavioral-experiment",
+                    text: "More Details>>>"
+                }
+            ]
+        },
+        {
+            coverImgSrc: "/images/projects/sprinting/sprinting-project-cover.png",
+            tags: ["Web Application", "Python", "JavaScript", "Web Framework",
+                "Redis", "Pub/Sub", "WebSocket"],
+            title: "Sprinting: Web-Based Sprint Planning and Collaboration",
+            description: `Sprinting is a dynamic web application to streamline sprint 
+            planning, sprint events hosting and progress sharing among team members.`,
+            links: [
+                {
+                    href: "/projects/sprinting",
+                    text: "More Details>>>"
+                },
+                {
+                    href: "http://44.203.49.24/sprinting",
+                    text: "Web Demo>>>"
+                }
+            ]
+        },
+        {
+            coverImgSrc: "/images/projects/chaoyihu.github.io/chaoyihu.github.io-cover.png",
+            tags: ["Next.js", "React", "TypeScript"],
+            title: "chaoyihu.github.io",
+            description: `Hey, this is the website you are looking at! I call this a good example 
+            of self-reference. 😉`,
+            links: [
+                {
+                    href: "/projects/chaoyihu.github.io",
+                    text: "Read a poem >>>"
+                }
+            ]
+        },
+    ]
+
+
     return (
         <div className='index-wrapper'>
-            <div className='animation-container' style={{ backgroundColor: 'azure', zIndex: -999}}>
+            <div className='animation-container' style={{ backgroundColor: 'azure', zIndex: -999 }}>
                 {
                     showAnimation ? (
                         <>
@@ -90,18 +156,29 @@ export default function Home() {
                 }
             </div>
             <div id='home-pane'>
-                <div className="poem-section">
-                    <h2>Story of The Wanderer Bot</h2>
-                    <p>In a realm where cogs and gears entwine,<br/>
-                        A robot woke, his heart a ruby shine.<br/>
-                        The passion inside burns bright and bold,<br/>
-                        He dreamed of wonders yet untold.</p>
-                    <p>The land of machines spun round,<br/>
-                        Accurate, barren, with beauty profound.<br/>
-                        Enormous cogs in a dance so grand,<br/>
-                        The robot strode, a curious hand.</p>
-                    <p>In the temple of alloy, whispers the old,<br/>
-                        He overheard the stories that machines have told.</p>
+                <h1 className="post-title">Home</h1>
+                <Intro />
+                <div className='home-section'>
+                    <p><strong>Now, let me show you what I can do!</strong> Listed here are a
+                        couple of projects to showcase my skills. If you are interested, please do
+                        check out the <a href='/projects'>Projects</a> page for a more complete list!</p>
+                    {projectProps.map((prop) => (
+                        <ProjectListItem
+                            coverImgSrc={prop.coverImgSrc}
+                            tags={prop.tags}
+                            title={prop.title}
+                            description={prop.description}
+                            links={prop.links}
+                        />
+                    ))}
+                </div>
+                <div className='home-section' id='home-section-resume'>
+                    <h2>My Resume</h2>
+                    <FileLinkEmbed
+                        src="/chaoyihu.resume.web.pdf"
+                        height='400px'
+                        width='100%'
+                    />
                 </div>
             </div>
         </div>
