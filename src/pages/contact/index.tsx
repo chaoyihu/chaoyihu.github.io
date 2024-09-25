@@ -41,7 +41,7 @@ export default function Contact () {
                 images: [
                     "/images/animation/runner/robot.gif"
                 ],
-                layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
+                layer: -10, key: 0, mobile: false, bottom: '0vw', width: '6%'
             },
             {
                 images: [
@@ -52,7 +52,7 @@ export default function Contact () {
                     "/images/animation/runner/floor-d.webp",
                     "/images/animation/runner/floor-d.webp"
                 ],
-                layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-46%'
+                layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-13vw'
             },
             {
                 images: [
@@ -63,7 +63,7 @@ export default function Contact () {
                     "/images/animation/runner/blank.webp",
                     "/images/animation/runner/landscape-d1.webp",
                 ],
-                layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-48%'
+                layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-14vw'
             },
             {
                 images: [
@@ -74,7 +74,7 @@ export default function Contact () {
                     "/images/animation/runner/blank.webp",
                     "/images/animation/runner/blank.webp"
                 ],
-                layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-40%'
+                layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-14vw'
             },
             {
                 images: [
@@ -85,7 +85,7 @@ export default function Contact () {
                     "/images/animation/runner/robot-friend-1.gif",
                     "/images/animation/runner/robot-friend-2.gif"
                 ],
-                layer: -11, cycle: 40, key: 4, mobile: true, bottom: '-76%'
+                layer: -11, cycle: 40, key: 4, mobile: true, bottom: '-21vw'
             },
         ];
 

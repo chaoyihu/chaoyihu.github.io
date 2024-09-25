@@ -3,6 +3,7 @@ import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
 import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
 import ProjectListItem, { ProjectListItemProps } from '@/components/Post/BlogListItem';
 import FileLinkEmbed from '@/components/Misc/FileLinkEmbed';
+import { BlogsList } from '@/components/Post/BlogsList';
 
 import Intro from '@/markdown/home-intro.mdx';
 
@@ -44,7 +45,7 @@ export default function Home() {
             images: [
                 "/images/animation/runner/robot.gif"
             ],
-            layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
+            layer: -10, key: 0, mobile: false, bottom: '0vw', width: '6%'
         },
         {
             images: [
@@ -55,7 +56,7 @@ export default function Home() {
                 "/images/animation/runner/floor-a.webp",
                 "/images/animation/runner/floor-a.webp"
             ],
-            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-48%'
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-13vw'
         },
         {
             images: [
@@ -66,7 +67,7 @@ export default function Home() {
                 "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-a1.webp",
             ],
-            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-50%'
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-14vw'
         },
         {
             images: [
@@ -77,7 +78,7 @@ export default function Home() {
                 "/images/animation/runner/landscape-a3.webp",
                 "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-58%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-14vw'
         },
     ];
 
@@ -159,8 +160,9 @@ export default function Home() {
                 <h1 className="post-title">Home</h1>
                 <Intro />
                 <div className='home-section'>
-                    <p><strong>Now, let me show you what I can do!</strong> Listed here are a
-                        couple of projects to showcase my skills. If you are interested, please do
+                <h2>Featured Projects</h2>
+                    <p>Now, let me show you what I can do! Listed below are a
+                        couple of projects to showcase my skills. Welcome to
                         check out the <a href='/projects'>Projects</a> page for a more complete list!</p>
                     {projectProps.map((prop) => (
                         <ProjectListItem
@@ -172,6 +174,16 @@ export default function Home() {
                         />
                     ))}
                 </div>
+                <div className='home-section'>
+                    <h2>Recent Blogs</h2>
+                    <p>
+                        The <a href="/blogs">Blogs</a> page contains technical posts that
+                        document my experiences as a developer, focusing on challenges I have 
+                        encountered and steps I took to build viable solutions. Here are some
+                        of my recent blogs:
+                    </p>
+                    <BlogsList topN={4}/>
+                </div>
                 <div className='home-section' id='home-section-resume'>
                     <h2>My Resume</h2>
                     <FileLinkEmbed
@@ -179,6 +191,13 @@ export default function Home() {
                         height='400px'
                         width='100%'
                     />
+                </div>
+                <div className='home-section'>
+                    <h2>Contact</h2>
+                    <p>
+                        If you are interested, please don't hesitate to <a href="/contact">Get 
+                        in Touch</a>!
+                    </p>
                 </div>
             </div>
         </div>

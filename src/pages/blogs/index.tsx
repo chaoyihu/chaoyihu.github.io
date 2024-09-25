@@ -1,43 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BlogInfo } from '@/components/Post/Blog';
+import { BlogsList } from '@/components/Post/BlogsList';
 import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
 import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
 
 type PathsResponse = string[];
 
 export default function Blogs() {
-
-    /* blogInfos:{ blogPath: blogInfo }*/
-    const [blogInfos, setBlogInfos] = useState<Map<string, BlogInfo>>(new Map());
-    const [loading, setLoading] = useState(true);
-   
-    useEffect(() => {
-        const fetchBlogs = async () => {
-          try {
-            const response = await fetch('/api/getAllBlogs');
-            const data: PathsResponse = await response.json();
-    
-            let infos = new Map<string, BlogInfo>();
-    
-            for (const blogPath of data) {
-                if (blogPath === '/index') { continue; }
-                const module = await import(`@/pages/blogs${blogPath}`);
-                infos.set(blogPath, module.info);
-            }
-    
-            setBlogInfos(infos);
-          } catch (error) {
-            console.error('Error fetching blog data:', error);
-          }
-        };
-    
-        fetchBlogs().then(() => {
-            for (let [path, info] of blogInfos) {
-                console.log(path, info.title);
-            }
-            setLoading(false);
-        });
-    }, []);
 
     /* Animation */
     const [showAnimation, setShowAnimation] = useState(false);
@@ -77,7 +45,7 @@ export default function Blogs() {
             images: [
                 "/images/animation/runner/robot.gif"
             ],
-            layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
+            layer: -10, key: 0, mobile: false, bottom: '0vw', width: '6%'
         },
         {
             images: [
@@ -88,7 +56,7 @@ export default function Blogs() {
                 "/images/animation/runner/floor-c.webp",
                 "/images/animation/runner/floor-c.webp"
             ],
-            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-48%'
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-13vw'
         },
         {
             images: [
@@ -99,7 +67,7 @@ export default function Blogs() {
                 "/images/animation/runner/blank.webp",
                 "/images/animation/runner/landscape-c1.webp",
             ],
-            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-50%'
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-14vw'
         },
         {
             images: [
@@ -110,7 +78,7 @@ export default function Blogs() {
                 "/images/animation/runner/landscape-c3.webp",
                 "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-50%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-14vw'
         },
     ];
 
@@ -128,26 +96,7 @@ export default function Blogs() {
             </div>
             <div id='blogs-pane'>
                 <h1 className='post-title'>Blogs</h1>
-                {
-                    loading ? (
-                        <p>Loading...</p>
-                    ) : (
-                        Array.from(blogInfos.entries()).map(([path, info], idx) => (
-                            <div className="blog-item" key={idx}>
-                                <div className="blog-item-title">
-                                    <h3><a href={'/blogs' + path}>{info.title}</a></h3>
-                                    {info.tags.map((tag) => <span className="blog-tag">{ tag }</span>)}
-                                </div>
-                                <div className="blog-item-description">
-                                    {info.description}
-                                </div>
-                                <div className="blog-item-date">
-                                    <time className="dt-published">{ info.date }</time>
-                                </div>
-                            </div>
-                        ))
-                    )
-                }
+                <BlogsList />
             </div>
         </div>
     )

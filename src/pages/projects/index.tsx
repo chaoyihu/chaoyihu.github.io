@@ -159,7 +159,7 @@ export default function Projects() {
             images: [
                 "/images/animation/runner/robot.gif"
             ],
-            layer: -10, key: 0, mobile: false, bottom: '3%', width: '6%'
+            layer: -10, key: 0, mobile: false, bottom: '0vw', width: '6%'
         },
         {
             images: [
@@ -170,7 +170,7 @@ export default function Projects() {
                 "/images/animation/runner/floor-b.webp",
                 "/images/animation/runner/floor-b.webp",
             ],
-            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-48%'
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-13vw'
         },
         {
             images: [
@@ -181,7 +181,7 @@ export default function Projects() {
                 "/images/animation/runner/blank.webp",
                 "/images/animation/runner/blank.webp",
             ],
-            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-50%'
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-14vw'
         },
         {
             images: [
@@ -192,7 +192,7 @@ export default function Projects() {
                 "/images/animation/runner/landscape-b3.webp",
                 "/images/animation/runner/blank.webp"
             ],
-            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-44%'
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-14vw'
         },
     ];
 
