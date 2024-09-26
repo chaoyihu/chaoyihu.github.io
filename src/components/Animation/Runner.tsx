@@ -59,8 +59,8 @@ const RunnerImmobile = styled.div<RunnerDivProps>`
 const Runner: React.FC<RunnerProps> = ({ runnerDivs }) => {
     return (
         <div>    
-            {runnerDivs.map(({ images, layer, cycle, key, mobile, bottom, width }) => (
-                <div className="runner-container" style={{ zIndex: layer, bottom: bottom}}>
+            {runnerDivs.map(({ images, layer, cycle, key, mobile, bottom, width }, idx) => (
+                <div className="runner-container" style={{ zIndex: layer, bottom: bottom}} key={idx}>
                     {
                         mobile ? (
                             <RunnerSlider
@@ -71,7 +71,8 @@ const Runner: React.FC<RunnerProps> = ({ runnerDivs }) => {
                                 key={key}
                                 cycle={cycle}
                             >
-                                {images.map((src, idx) => ( <img src={src} width="50%" key={idx}/> ))}
+                                {images.map((src, idx) => (
+                                    <img src={src} width='50%'  key={idx} alt=""/>))}
                                 
                             </RunnerSlider> 
                         ) : (
@@ -83,7 +84,8 @@ const Runner: React.FC<RunnerProps> = ({ runnerDivs }) => {
                                 key={key}
                                 width={width}
                             >
-                                {images.map((src, idx) => ( <img src={src} width={width} key={idx}/> ))}
+                                {images.map((src, idx) => (
+                                    <img src={src} width={width} key={idx} alt=""/> ))}
                             </RunnerImmobile>
                         )
                     }

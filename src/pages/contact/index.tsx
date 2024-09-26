@@ -3,91 +3,91 @@ import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
 import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
 
 export default function Contact () {
-        /* Animation */
-        const [showAnimation, setShowAnimation] = useState(false);
+    /* Animation */
+    const [showAnimation, setShowAnimation] = useState(false);
 
-        useEffect(() => {
-          // Delay rendering the spinner to avoid initial static images before animation starts
-          const timer = setTimeout(() => setShowAnimation(true), 500);
-          return () => clearTimeout(timer);
-        }, []);
-      
+    useEffect(() => {
+        // Delay rendering the spinner to avoid initial static images before animation starts
+        const timer = setTimeout(() => setShowAnimation(true), 500);
+        return () => clearTimeout(timer);
+    }, []);
     
-        const spinners: SpinnerImgProps[] = [
-            {
-                src: "/images/animation/spinner/geometry-1.webp",
-                layer: -101, cycle: 60, angle: 359, key: 1
-            },
-            {
-                src: "/images/animation/spinner/geometry-2.webp",
-                layer: -102, cycle: 20, angle: -359, key: 2
-            },
-            {
-                src: "/images/animation/spinner/geometry-3.webp",
-                layer: -103, cycle: 280, angle: 359, key: 3
-            },
-            {
-                src: "/images/animation/spinner/geometry-4.webp",
-                layer: -104, cycle: 400, angle: -359, key: 4
-            },
-            {
-                src: "/images/animation/spinner/geometry-5.webp",
-                layer: -105, cycle: 600, angle: 359, key: 5
-            }
-        ];
-    
-        const sliders: RunnerDivProps[] = [
-            {
-                images: [
-                    "/images/animation/runner/robot.gif"
-                ],
-                layer: -10, key: 0, mobile: false, bottom: '0vw', width: '6%'
-            },
-            {
-                images: [
-                    "/images/animation/runner/floor-d.webp",
-                    "/images/animation/runner/floor-d.webp",
-                    "/images/animation/runner/floor-d.webp",
-                    "/images/animation/runner/floor-d.webp",
-                    "/images/animation/runner/floor-d.webp",
-                    "/images/animation/runner/floor-d.webp"
-                ],
-                layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-13vw'
-            },
-            {
-                images: [
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/landscape-d1.webp",
-                    "/images/animation/runner/landscape-d2.webp",
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/landscape-d1.webp",
-                ],
-                layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-14vw'
-            },
-            {
-                images: [
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/landscape-d3.webp",
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/blank.webp"
-                ],
-                layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-14vw'
-            },
-            {
-                images: [
-                    "/images/animation/runner/robot-friend-1.gif",
-                    "/images/animation/runner/robot-friend-2.gif",
-                    "/images/animation/runner/robot-friend-3.gif",
-                    "/images/animation/runner/blank.webp",
-                    "/images/animation/runner/robot-friend-1.gif",
-                    "/images/animation/runner/robot-friend-2.gif"
-                ],
-                layer: -11, cycle: 40, key: 4, mobile: true, bottom: '-21vw'
-            },
-        ];
+
+    const spinners: SpinnerImgProps[] = [
+        {
+            src: "/images/animation/spinner/geometry-1.webp",
+            layer: -101, cycle: 60, angle: 359, key: 1
+        },
+        {
+            src: "/images/animation/spinner/geometry-2.webp",
+            layer: -102, cycle: 20, angle: -359, key: 2
+        },
+        {
+            src: "/images/animation/spinner/geometry-3.webp",
+            layer: -103, cycle: 280, angle: 359, key: 3
+        },
+        {
+            src: "/images/animation/spinner/geometry-4.webp",
+            layer: -104, cycle: 400, angle: -359, key: 4
+        },
+        {
+            src: "/images/animation/spinner/geometry-5.webp",
+            layer: -105, cycle: 600, angle: 359, key: 5
+        }
+    ];
+
+    const sliders: RunnerDivProps[] = [
+        {
+            images: [
+                "/images/animation/runner/robot.gif"
+            ],
+            layer: -10, key: 0, mobile: false, bottom: '0vw', width: '6%'
+        },
+        {
+            images: [
+                "/images/animation/runner/floor-d.webp",
+                "/images/animation/runner/floor-d.webp",
+                "/images/animation/runner/floor-d.webp",
+                "/images/animation/runner/floor-d.webp",
+                "/images/animation/runner/floor-d.webp",
+                "/images/animation/runner/floor-d.webp"
+            ],
+            layer: -20, cycle: 40, key: 1, mobile: true, bottom: '-13vw'
+        },
+        {
+            images: [
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-d1.webp",
+                "/images/animation/runner/landscape-d2.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-d1.webp",
+            ],
+            layer: -30, cycle: 100, key: 2, mobile: true, bottom: '-14vw'
+        },
+        {
+            images: [
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/landscape-d3.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/blank.webp"
+            ],
+            layer: -40, cycle: 240, key: 3, mobile: true, bottom: '-14vw'
+        },
+        {
+            images: [
+                "/images/animation/runner/robot-friend-1.gif",
+                "/images/animation/runner/robot-friend-2.gif",
+                "/images/animation/runner/robot-friend-3.gif",
+                "/images/animation/runner/blank.webp",
+                "/images/animation/runner/robot-friend-1.gif",
+                "/images/animation/runner/robot-friend-2.gif"
+            ],
+            layer: -11, cycle: 40, key: 4, mobile: true, bottom: '-21vw'
+        },
+    ];
 
     return (
         <div>

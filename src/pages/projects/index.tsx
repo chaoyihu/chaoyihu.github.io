@@ -7,19 +7,6 @@ export default function Projects() {
 
     const projectProps: ProjectListItemProps[] = [
         {
-            coverImgSrc: "/images/projects/chaoyihu.github.io/chaoyihu.github.io-cover.png",
-            tags: ["Next.js", "React", "TypeScript"],
-            title: "chaoyihu.github.io",
-            description: `Hey, this is the website you are looking at! I call this a good example 
-            of self-reference. 😉`,
-            links: [
-                {
-                    href: "/projects/chaoyihu.github.io",
-                    text: "Read a poem >>>"
-                }
-            ]
-        },
-        {
             coverImgSrc: "/images/projects/ultrasound-image-segmentation/ultrasound-project-result.png",
             tags: ["Image Processing", "Deep Learning", "Python"],
             title: "Semantic Segmentation of Ultrasound Images",
@@ -118,7 +105,20 @@ export default function Projects() {
                     text: "Web Demo>>>"
                 }
             ]
-        }
+        },
+        {
+            coverImgSrc: "/images/projects/chaoyihu.github.io/chaoyihu.github.io-cover.png",
+            tags: ["Next.js", "React", "TypeScript"],
+            title: "chaoyihu.github.io",
+            description: `Hey, this is the website you are looking at! I call this a good example 
+            of self-reference. 😉`,
+            links: [
+                {
+                    href: "/projects/chaoyihu.github.io",
+                    text: "Read a poem >>>"
+                }
+            ]
+        },
     ]
 
 
@@ -126,9 +126,9 @@ export default function Projects() {
     const [showAnimation, setShowAnimation] = useState(false);
 
     useEffect(() => {
-      // Delay rendering the spinner to avoid initial static images before animation starts
-      const timer = setTimeout(() => setShowAnimation(true), 500);
-      return () => clearTimeout(timer);
+        // Delay rendering the spinner to avoid initial static images before animation starts
+        const timer = setTimeout(() => setShowAnimation(true), 500);
+        return () => clearTimeout(timer);
     }, []);
 
     const spinners: SpinnerImgProps[] = [
@@ -210,8 +210,9 @@ export default function Projects() {
             </div>
             <div id="project-pane">
                 <h1 className="post-title">Projects</h1>
-                {projectProps.map((prop) => (
+                {projectProps.map((prop, idx) => (
                     <ProjectListItem
+                        key={idx}
                         coverImgSrc={prop.coverImgSrc}
                         tags={prop.tags}
                         title={prop.title}

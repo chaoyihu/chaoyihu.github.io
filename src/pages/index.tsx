@@ -3,11 +3,24 @@ import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
 import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
 import ProjectListItem, { ProjectListItemProps } from '@/components/Post/BlogListItem';
 import FileLinkEmbed from '@/components/Misc/FileLinkEmbed';
-import { BlogsList } from '@/components/Post/BlogsList';
-
+// import {BlogsList} from '@/components/Post/BlogsList';
+import Link from 'next/link';
 import Intro from '@/markdown/home-intro.mdx';
+import { getAllBlogSlugs } from '@/lib/getBlogsData';
+import { BlogsProps } from './blogs';
+import BlogsList from '@/components/Post/BlogsList';
 
-export default function Home() {
+
+export async function getStaticProps() {
+    const blogSlugs = getAllBlogSlugs();
+    return {
+        props: {
+            blogSlugs
+        }
+    }
+}
+
+const Home: React.FC<BlogsProps> = ({ blogSlugs }) => {
 
     const [showAnimation, setShowAnimation] = useState(false);
 
@@ -160,12 +173,14 @@ export default function Home() {
                 <h1 className="post-title">Home</h1>
                 <Intro />
                 <div className='home-section'>
-                <h2>Featured Projects</h2>
+                    <h2>Featured Projects</h2>
                     <p>Now, let me show you what I can do! Listed below are a
                         couple of projects to showcase my skills. Welcome to
-                        check out the <a href='/projects'>Projects</a> page for a more complete list!</p>
-                    {projectProps.map((prop) => (
+                        check out the <Link href='/projects'>Projects</Link> page 
+                        for a more complete list!</p>
+                    {projectProps.map((prop, idx) => (
                         <ProjectListItem
+                            key={idx}
                             coverImgSrc={prop.coverImgSrc}
                             tags={prop.tags}
                             title={prop.title}
@@ -177,12 +192,12 @@ export default function Home() {
                 <div className='home-section'>
                     <h2>Recent Blogs</h2>
                     <p>
-                        The <a href="/blogs">Blogs</a> page contains technical posts that
+                        The <Link href="/blogs">Blogs</Link> page contains technical posts that
                         document my experiences as a developer, focusing on challenges I have 
                         encountered and steps I took to build viable solutions. Here are some
                         of my recent blogs:
                     </p>
-                    <BlogsList topN={4}/>
+                    <BlogsList blogSlugs={blogSlugs} topN={4}/>
                 </div>
                 <div className='home-section' id='home-section-resume'>
                     <h2>My Resume</h2>
@@ -195,11 +210,13 @@ export default function Home() {
                 <div className='home-section'>
                     <h2>Contact</h2>
                     <p>
-                        If you are interested, please don't hesitate to <a href="/contact">Get 
-                        in Touch</a>!
+                        If you are interested, please do not hesitate to <Link href="/contact">Get 
+                        in Touch</Link>!
                     </p>
                 </div>
             </div>
         </div>
     )
 }
+
+export default Home;

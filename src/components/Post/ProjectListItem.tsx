@@ -17,7 +17,7 @@ const ProjectListItem:React.FC<ProjectListItemProps> = (props) => {
     return (
         <div className="project-row">
             <div className="project-row-content">
-                <img src={props.coverImgSrc} alt={`Cover for ${props.title}`}/>
+                <img src={props.coverImgSrc} alt={`Cover for ${props.title}`} />
                 <div className="project-headline-box">
                     <h3><strong>{props.title}</strong></h3>
                     <p>

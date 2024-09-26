@@ -8,19 +8,28 @@ const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
+    pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+    output: 'export',
+    reactStrictMode: true,
+    sassOptions: {
+      includePaths: [path.join(__dirname, 'styles')],
+    },
 };
 
 const withMDX = createMDX({
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [
-    ],
-  },
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            config .node = {
+                fs: 'empty'
+            }
+        }
+        return config;
+    },
+    extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+    },
 });
 
 export default withMDX(nextConfig);

@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { BlogsList } from '@/components/Post/BlogsList';
+import BlogsList from '@/components/Post/BlogsList';
 import Spinner, { SpinnerImgProps } from "@/components/Animation/Spinner";
 import Runner, { RunnerDivProps } from '@/components/Animation/Runner';
+import { getAllBlogSlugs } from "@/lib/getBlogsData";
 
-type PathsResponse = string[];
+export async function getStaticProps() {
+    const blogSlugs = getAllBlogSlugs();
+    return {
+        props: {
+            blogSlugs
+        }
+    }
+}
 
-export default function Blogs() {
+export interface BlogsProps {
+    blogSlugs: string[];
+}
+
+
+const Blogs: React.FC<BlogsProps> = ({ blogSlugs }) => {
 
     /* Animation */
     const [showAnimation, setShowAnimation] = useState(false);
 
     useEffect(() => {
-      // Delay rendering the spinner to avoid initial static images before animation starts
-      const timer = setTimeout(() => setShowAnimation(true), 500);
-      return () => clearTimeout(timer);
+        // Delay rendering the spinner to avoid initial static images before animation starts
+        const timer = setTimeout(() => setShowAnimation(true), 500);
+        return () => clearTimeout(timer);
     }, []);
   
 
@@ -96,9 +109,10 @@ export default function Blogs() {
             </div>
             <div id='blogs-pane'>
                 <h1 className='post-title'>Blogs</h1>
-                <BlogsList />
+                <BlogsList blogSlugs={blogSlugs} />
             </div>
         </div>
     )
 }
 
+export default Blogs;

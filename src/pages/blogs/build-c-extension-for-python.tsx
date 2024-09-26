@@ -16,7 +16,7 @@ export const info: BlogInfo = {
 };
 
 export default function Page() {
-  return (
-    <Blog blogInfo={info} htmlString={content}/>
-  );
+    return (
+        <Blog blogInfo={info} htmlString={content}/>
+    );
 }

@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from 'react';
-
 import { BlogInfo } from '@/components/Post/Blog';
-import { TbMailOpened } from 'react-icons/tb';
+
 
 interface BlogsListProps {
+    blogSlugs: string[];
     topN?: number;  // show all posts by default, or just the most recent n posts
 }
 
-export const BlogsList: React.FC<BlogsListProps> = ({topN}) => {
-    type PathsResponse = string[];
-
+const BlogsList: React.FC<BlogsListProps> = ({ blogSlugs, topN }) => {
     const [blogInfos, setBlogInfos] = useState<Map<string, BlogInfo>>(new Map());
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('/api/getAllBlogs');
-                const data: PathsResponse = await response.json();
-    
-                let infos = new Map<string, BlogInfo>();
-    
-                for (const blogPath of data) {
-                    if (blogPath === '/index') { continue; }
-                    const module = await import(`@/pages/blogs${blogPath}`);
-                    infos.set(blogPath, module.info);
+                const infos = new Map<string, BlogInfo>();
+                for (const blogSlug of blogSlugs) {
+                    const blogsPage = await import(`@/pages/blogs/${blogSlug}`);
+                    infos.set(blogSlug, blogsPage.info);
                 }
-                
                 setBlogInfos(infos);
             } catch (error) {
                 console.error('Error fetching blog data:', error);
@@ -49,11 +41,10 @@ export const BlogsList: React.FC<BlogsListProps> = ({topN}) => {
             topN ? sortedEntries.slice(0, topN) : sortedEntries
         );
         setSortedBlogInfos(sortedInfos);
-    }, [blogInfos]);
+    }, [blogInfos, topN]);
 
 
-    return (
-        <>
+    return (<>
         {
             loading ? (
                 <p>Loading...</p>
@@ -61,8 +52,9 @@ export const BlogsList: React.FC<BlogsListProps> = ({topN}) => {
                 Array.from(sortedBlogInfos.entries()).map(([path, info], idx) => (
                     <div className="blog-item" key={idx}>
                         <div className="blog-item-title">
-                            <h3><a href={'/blogs' + path}>{info.title}</a></h3>
-                            {info.tags.map((tag) => <span className="blog-tag">{ tag }</span>)}
+                            <h3><a href={'/blogs/' + path}>{info.title}</a></h3>
+                            {info.tags.map((tag, idx) => (
+                                <span className="blog-tag" key={idx}>{ tag }</span>))}
                         </div>
                         <div className="blog-item-description">
                             {info.description}
@@ -74,6 +66,8 @@ export const BlogsList: React.FC<BlogsListProps> = ({topN}) => {
                 ))
             )
         }
-        </>
-    )
+    </>)
 }
+
+
+export default BlogsList;

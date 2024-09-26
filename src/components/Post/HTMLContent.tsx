@@ -9,39 +9,39 @@ import rehypeStringify from 'rehype-stringify';
 
 
 async function processHtml(htmlString: string): Promise<string> {
-  const processedFile = await unified()
-    .use(rehypeParse, { fragment: true })
-    .use(rehypeSlug)
-    .use(rehypeAutolinkHeadings)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process(htmlString);
-  return processedFile.toString();
+    const processedFile = await unified()
+        .use(rehypeParse, { fragment: true })
+        .use(rehypeSlug)
+        .use(rehypeAutolinkHeadings)
+        .use(rehypeSanitize)
+        .use(rehypeStringify)
+        .process(htmlString);
+    return processedFile.toString();
 }
 
 interface HtmlContentProps {
-  htmlString: string;
-  onRendered?: () => void;
+    htmlString: string;
+    onRendered?: () => void;
 }
 
 const HtmlContent: React.FC<HtmlContentProps> = ({ htmlString, onRendered }) => {
-  const [htmlContent, setHtmlContent] = useState<string>('');
+    const [htmlContent, setHtmlContent] = useState<string>('');
 
-  useEffect(() => {
-    const processContent = async () => {
-      const processedHtml = await processHtml(htmlString);
-      setHtmlContent(processedHtml);
-    };
-    processContent();
-  }, [htmlString]);
+    useEffect(() => {
+        const processContent = async () => {
+            const processedHtml = await processHtml(htmlString);
+            setHtmlContent(processedHtml);
+        };
+        processContent();
+    }, [htmlString]);
 
-  useEffect(() => {
-    if (htmlContent && onRendered) {
-      onRendered();
-    }
-  }, [htmlContent, onRendered]);
+    useEffect(() => {
+        if (htmlContent && onRendered) {
+            onRendered();
+        }
+    }, [htmlContent, onRendered]);
 
-  return <div>{parse(htmlContent)}</div>;
+    return <div>{parse(htmlContent)}</div>;
 };
 
 export default HtmlContent;

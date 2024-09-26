@@ -42,7 +42,7 @@ const Navbar = () => {
     return (
         <nav className='nav'>
             <Link href="/" onClick={() => setActiveIdx(0)}>
-                <img src="/favicon.ico" width='50px'></img>
+                <img src="/favicon.ico" width='50px' />
             </Link>
 
             <div onClick={() => setNavActive(!navActive)} className="nav__menu-bar">
