@@ -383,7 +383,9 @@
   .nav__link.active::before {
     width: 100%;
   }
+}
 
+@media screen and (max-width: 768px) {
   .project-row-content {
     flex-direction: column;
   }
