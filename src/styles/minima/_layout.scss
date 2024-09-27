@@ -32,7 +32,7 @@
 
 #home-pane {
   padding: 30px 20% 30px 20%;
-  min-width: 800px;
+  width: 100%;
   background-color: white;
 }
 
@@ -382,6 +382,19 @@
   .nav__link:hover::before,
   .nav__link.active::before {
     width: 100%;
+  }
+
+  .project-row-content {
+    flex-direction: column;
+  }
+
+  .project-row-content img {
+    width: 100%;
+  }
+
+  .project-headline-box {
+    width: 100%;
+    padding-left: 0;
   }
 }
 
