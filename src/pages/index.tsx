@@ -112,7 +112,7 @@ const Home: React.FC<BlogsProps> = ({ blogSlugs }) => {
         },
         {
             coverImgSrc: "/images/projects/behavioral-experiment/maze-setting.png",
-            tags: ["Video Processing", "Python", "MATLAB", "NumPy", "Pandas"],
+            tags: ["Video Processing", "Python", "MATLAB", "NumPy", "pandas"],
             title: "Development of laboratory software tools to assist animal experiment",
             description: `Video processing, batch processing, data visualization, and GUI 
             development to assist scientific research.`,

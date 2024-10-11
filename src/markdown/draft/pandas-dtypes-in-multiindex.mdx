@@ -1,0 +1,27 @@
+# Add `dtypes` param to `pd.MultiIndex`
+
+## Motivation
+- [BUG: None value in MultiIndex can't be found](https://github.com/pandas-dev/pandas/issues/59003) - 
+MentalMegalodon opened this issue on Jun 13, 2024.
+- [BUG: assert_frame_equals fails when MultiIndex elements are None](https://github.com/pandas-dev/pandas/issues/54521) - 
+attack68 opened this issue on Aug 13, 2023
+- [ENH: initialising MultiIndex with a dtypes param](https://github.com/pandas-dev/pandas/issues/54523) - 
+attack68 opened this issue on Aug 13, 2023.
+
+
+## Investigation
+
+sentinel value of -1 for NA values: https://github.com/pandas-dev/pandas/blob/v2.2.2/pandas/core/indexes/multi.py#L2959
+
+## Action Items
+                                                                      
+- Add code logic for dtype parameter in `pandas/core/indexes/multi.py::MultiIndex.__new__`.
+- Add test cases.                                                           
+- Update documentation.                                                     
+- Open a PR: Initialising `MultiIndex` with a `dtypes` param.
+- Add comment in #54523: I made an attempt to add `dtype` param to `MultiIndex` constructors [link to PR]. The PR should be a proof of            concept. As is mentioned by @mroeschke, this api change needs more discussion.
+[Summary of its behavior and potential effects]                             
+[Give an example]                                                           
+[Summary of how it's implemented]                                           
+- Wait for comments and reviews.                                            
+- Tag [@KilianKW] when the pr is merged or aborted.        

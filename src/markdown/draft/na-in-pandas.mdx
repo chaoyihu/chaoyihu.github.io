@@ -1,0 +1,112 @@
+# Missing Value Handling in pandas
+
+## Problem Description
+
+### Overview
+- What needs to be changed?
+- What motivates this change?
+- Which parts of the code base will be affected?
+- What are the concerns?
+
+    - Compatibility with NumPy.
+    - Change of behavior may break backward compatibility.
+
+### Related discussions
+
+[API: distinguish NA vs NaN in floating dtypes](https://github.com/pandas-dev/pandas/issues/32265)
+[PDEP-16: Consistent missing value handling](https://github.com/pandas-dev/pandas/pull/58988)
+
+jbrockmendel opened this issue on Apr 12, 2024: [DISC: path to nullable-by-default integers and floats](https://github.com/pandas-dev/pandas/issues/58243)
+Ice Cream Agreement: in-person discussion in Aug 2023.
+
+Ref:
+[NaN](https://en.wikipedia.org/wiki/NaN)
+[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)
+
+### Related issues
+Jun 27, 2024 [BUG: 0/0 with arrow backend is not "NA"](https://github.com/pandas-dev/pandas/issues/59122)
+Jan 11, 2024 [BUG: np.nan is converted to pd.NA in nullable column.](https://github.com/pandas-dev/pandas/issues/56836)
+Aug 13, 2023 [BUG: assert_frame_equals fails when MultiIndex elements are None](https://github.com/pandas-dev/pandas/issues/54521)
+Aug 13, 2023 [ENH: initialising MultiIndex with a dtypes param](https://github.com/pandas-dev/pandas/issues/54523)
+Jun 13, 2023 [BUG: None value in MultiIndex can't be found](https://github.com/pandas-dev/pandas/issues/59003)
+Aug 18, 2022 [BUG: algorithms.factorize moves null values when sort=False](https://github.com/pandas-dev/pandas/pull/46601)
+Apr 30, 2022 [Deprecate na_sentinel, add use_na_sentinel](https://github.com/pandas-dev/pandas/issues/46910)
+
+
+## Investigation 🧐
+
+### Compatibility with NumPy
+
+- NumPy data types
+
+NumPy has five basic numerical types: `bool`, `int`, `uint`, `float`, and `complex`. A basic numerical type name combined with a numeric bitsize defines a concrete type, e.g. `numpy.float64` is a 64-bit floating point data type.
+
+In addition to numerical types, NumPy supports storing unicode strings (`numpy.str_`), null-terminated byte sequences (`numpy.bytes_`), and arbitrary byte sequences (`numpy.void`). They are parameterized by a fixed width in either bytes or unicode points. `numpy.dtypes.StringDType` is a relatively recent addition for flexible user-defined data types, which supports variable-width string data.
+
+Starting from NumPy 1.7, `datetime64` is natively supported as a core array data type, and `timeselta64` was created to complement `datetime64`. But NumPy does not support timezone-aware datetimes as of Oct 2024.
+
+
+- How does NumPy handle missing values?
+
+| Type | Null | NaN | Notes |
+| ---- | ---- | --- | ----- |
+| `bool` | string |   |   |
+| `int` | string |   |   |
+| `uint` | string |   |    |
+| `float` | string |   |    |
+| `complex` | string |   |   |
+| `datetime64` | string |  NaT (not a time) |   |
+| `timedelta64` | string | NaT (not a time) |  Created to complement `datetime64`. |
+| `str_` |     |       |      |
+| `bytes_` |     |       |      |
+| `void` |     |       |      |
+| `StringDType` | '' (empty string) | | Optionally, you can pass `na_object` as a keyword argument for the initializer. |
+
+> **Note:** The na_object can be any arbitrary python object. Common choices are `numpy.nan`, `float('nan')`, `None`, an object specifically intended to represent missing data like `pandas.NA`, or a (hopefully) unique string like `"__placeholder__"`.
+
+NaN-like sentinels and string sentinels, which includes the python `nan` float, the pandas missing data sentinel `pd.NA`, [returns itself in arithmetic operations, and sorts to the end of an array](https://numpy.org/devdocs/user/basics.strings.html#nan-like-missing-data-sentinels).
+
+String missing data values are inatances / subtypes of `str`. They are treated as if they have a value given by the string sentinel.
+
+Other sentinels, such as `None` raises an error in string operations.
+
+- How are pandas data types different from NumPy?
+
+> pandas defines an interface for implementing data types and arrays that extend NumPy’s type system. pandas itself uses the extension system for some types that aren’t built into NumPy (categorical, period, interval, datetime with timezone).
+
+The interface consists of two classes: `pandas.api.extensions.ExtensionDtype` and `pandas.api.extensions.ExtensionArray`.
+
+| NumPy | pandas | Notes |
+| ----- | ------ | ----- |
+| `bool` | `BooleanDtype` | nullable boolean |
+| `int` | `Int64Dtype`, `Int32Dtype`, ... | nullable integer |
+| `uint` | `UInt64Dtype`, `UInt32Dtype`, ... | nullable integer |
+| `float` | `Float64Dtype`, `Float32Dtype` | |
+| `complex` | string | |
+| `datetime64` | string | |
+| `timedelta64` | string | |
+| `datetime64` | `DatetimeTZDtype` | |
+| `str_` |  `StringDtype`   | |
+| `bytes_` |     | |
+| `void` |     | |
+| `StringDType` | |
+| (none) | `CategoricalDtype` | |
+| (none) | `PeriodDtype` | a range, a time span |
+| (none) | `SparseDtype` | |
+| (none) | `IntervalDtype` | a bounded, slice-like interval |
+
+
+- How does pandas handle missing values?
+
+
+Ref:
+- [NumPy Data Types](https://numpy.org/devdocs/user/basics.types.html)
+- [pandas arrays, scalars, and data types](https://pandas.pydata.org/docs/reference/arrays.html)
+
+### Backward compatibility
+
+## Potential solutions with action items
+
+- Open PR to document the dtypes workaround in 54523  
+- Open a PR to fix bug in 54521  
+- Fix 59153 

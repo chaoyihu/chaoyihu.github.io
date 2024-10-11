@@ -22,7 +22,7 @@ export default function Projects() {
         },
         {
             coverImgSrc: "/images/projects/behavioral-experiment/maze-setting.png",
-            tags: ["Video Processing", "Python", "MATLAB", "NumPy", "Pandas"],
+            tags: ["Video Processing", "Python", "MATLAB", "NumPy", "pandas"],
             title: "Development of laboratory software tools to assist animal experiment",
             description: `Video processing, batch processing, data visualization, and GUI 
             development to assist scientific research.`,
@@ -54,7 +54,7 @@ export default function Projects() {
             patients based on MRI data from ADNI dataset.`,
             links: [
                 {
-                    href: "/projects/mri-alzheimer",
+                    href: "/projects/mri-classification",
                     text: "More Details>>>"
                 }
             ]
