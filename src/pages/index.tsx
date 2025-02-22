@@ -135,10 +135,6 @@ const Home: React.FC<BlogsProps> = ({ blogSlugs }) => {
                     href: "/projects/sprinting",
                     text: "More Details>>>"
                 },
-                {
-                    href: "http://44.203.49.24/sprinting",
-                    text: "Web Demo>>>"
-                }
             ]
         },
         {

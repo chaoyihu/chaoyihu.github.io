@@ -84,10 +84,6 @@ export default function Projects() {
                     href: "/projects/sprinting",
                     text: "More Details>>>"
                 },
-                {
-                    href: "http://44.203.49.24/sprinting",
-                    text: "Web Demo>>>"
-                }
             ]
         },
         {
@@ -113,10 +109,6 @@ export default function Projects() {
                     href: "/projects/vocabbler",
                     text: "More Details>>>"
                 },
-                {
-                    href: "http://44.203.49.24/vocabbler",
-                    text: "Web Demo>>>"
-                }
             ]
         },
         {
